@@ -1,0 +1,197 @@
+---
+// src/components/QuemSomos/QuemSomos.astro
+---
+
+<section id="quem-somos" class="quem-somos-section">
+  <div class="container qs-container">
+    <div class="qs-image-col">
+      <div class="qs-logo-wrapper">
+        <img src="/logo.png" alt="Crown Consórcios" class="qs-logo-img" />
+      </div>
+    </div>
+
+    <div class="qs-content-col">
+      <div class="content-inner">
+        <h2 class="section-title text-white">Quem somos</h2>
+        <p class="section-text text-white">
+          Na Crown Consórcios, acreditamos que cada cliente tem uma história única, e estamos aqui em Campo Grande (MS) para garantir que essas histórias sejam vividas com segurança e tranquilidade.
+        </p>
+
+        <p class="section-text text-white bold mt-4">
+          Nossa jornada começou com um propósito claro:
+        </p>
+
+        <p class="section-text text-white">
+          Proteger o que realmente importa para você e ajudar a realizar seus maiores sonhos, seja o primeiro carro, a casa própria ou a blindagem do seu patrimônio.
+        </p>
+
+        <p class="section-text text-white small mt-4 opacity-90">
+          Sabemos que adquirir um seguro ou consórcio vai muito além de um simples contrato; é um passo importante para assegurar seu futuro, e é por isso que nos dedicamos a oferecer soluções personalizadas, transparentes e que se ajustam perfeitamente à realidade dos sul-mato-grossenses.
+        </p>
+
+        <button class="btn-secondary mt-6" id="open-budget-dialog-qs"
+          >SOLICITAR ORÇAMENTO</button
+        >
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const openBtnsQs = document.querySelectorAll("#open-budget-dialog-qs");
+  openBtnsQs.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      (
+        document.getElementById("budget-dialog") as HTMLDialogElement
+      )?.showModal();
+    });
+  });
+</script>
+
+<style>
+  .quem-somos-section {
+    position: relative;
+    padding: 80px 0;
+    overflow: hidden;
+    background-color: var(--primary-dark);
+  }
+
+  .qs-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 60%;
+    height: 100%;
+    background-color: var(--primary);
+    border-radius: 0 100px 100px 0;
+    z-index: 1;
+    opacity: 0.5;
+  }
+
+  .qs-container {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: stretch;
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    gap: 120px;
+  }
+
+  .qs-image-col {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 100px;
+  }
+
+  .qs-logo-wrapper {
+    width: 100%;
+    margin: 0 auto;
+    max-width: 400px;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .qs-logo-img {
+    max-width: 400px;
+    width: 100%;
+    margin-right: 100px;
+    height: auto;
+    filter: brightness(0) invert(1);
+  }
+
+  .qs-content-col {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .content-inner {
+    width: 100%;
+    margin: 0 auto;
+    max-width: 550px;
+  }
+
+  .text-white {
+    color: white !important;
+  }
+
+  .bold {
+    font-weight: 700;
+  }
+
+  .mt-4 {
+    margin-top: 16px;
+  }
+
+  .mt-6 {
+    margin-top: 32px;
+  }
+
+  .opacity-90 {
+    opacity: 0.9;
+  }
+
+  .small {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .btn-secondary {
+    background-color: #d1e8d4; /* Um tom suave misturado (na imagem original é um verde claro). Como o tema mudou pra azul, usaremos um tom claro ou branco */
+    background: linear-gradient(to right, #ffffff, #e0f2fe);
+    color: var(--primary-dark);
+    padding: 14px 28px;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 14px;
+    transition: all 0.3s ease;
+  }
+
+  .btn-secondary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  }
+
+  @media (max-width: 992px) {
+    .quem-somos-section {
+      height: auto;
+      padding: 60px 0;
+    }
+    .qs-container {
+      flex-direction: column-reverse;
+      gap: 40px;
+    }
+
+    .qs-image-col {
+      display: none;
+    }
+
+    .qs-content-col {
+      width: 100%;
+    }
+
+    .qs-bg {
+      width: 100%;
+      height: 40%;
+      border-radius: 0 0 100px 100px;
+    }
+
+    .qs-content-col {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .qs-logo-img {
+      max-width: 200px;
+    }
+  }
+</style>

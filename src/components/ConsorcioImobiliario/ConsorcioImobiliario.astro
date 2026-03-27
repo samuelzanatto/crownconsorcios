@@ -1,0 +1,158 @@
+---
+// src/components/ConsorcioImobiliario/ConsorcioImobiliario.astro
+---
+
+<section id="consorcio-imobiliario" class="consorcio-imob-section">
+  <!-- Fundo 100% azul ou da cor definida baseada na logo -->
+  <div class="container imob-container">
+    <div class="imob-image-col">
+      <img src="/minihouse.png" alt="Casa em miniatura" class="imob-real-img" />
+    </div>
+
+    <div class="imob-content-col">
+      <div class="content-inner">
+        <h2 class="title text-white">Consórcio Imobiliário</h2>
+
+        <p class="subtitle text-white bold mt-4">
+          Você já imaginou a sensação de abrir a porta do seu novo lar?
+        </p>
+
+        <p class="text text-white mt-4 small">
+          O Consórcio Imobiliário da Crown Consórcios foi criado exatamente para transformar esse sonho em realidade, de forma acessível e planejada. Aqui, você não precisa lidar com os altos juros ou a burocracia pesada que normalmente acompanham a compra de um imóvel.
+        </p>
+
+        <p class="text text-white mt-4 small">
+          Com nosso consórcio, você planeja, investe e realiza no tempo certo, com parcelas que cabem no seu bolso e que respeitam o seu planejamento financeiro. É a sua chance de construir, reformar ou comprar o seu imóvel em Mato Grosso do Sul de forma inteligente.
+        </p>
+
+        <button class="btn-secondary mt-6">VER MAIS</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .consorcio-imob-section {
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    background-color: var(--primary-dark);
+    background-image: linear-gradient(
+      to right,
+      rgba(27, 83, 128, 0.95),
+      rgba(40, 120, 184, 0.95)
+    );
+  }
+
+  .imob-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    gap: 120px;
+  }
+
+  .imob-image-col {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+
+  .imob-real-img {
+    width: 240%;
+    max-width: 1920px;
+    height: auto;
+    object-fit: contain;
+    margin-top: 146px;
+    display: block;
+    transform: scaleX(-1);
+  }
+
+  .imob-content-col {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 40px;
+  }
+
+  .content-inner {
+    width: 100%;
+    margin: 0 auto;
+    max-width: 550px;
+  }
+
+  .title {
+    font-size: 36px;
+    font-weight: 700;
+  }
+
+  .subtitle {
+    font-size: 20px;
+  }
+
+  .text {
+    font-size: 15px;
+    line-height: 1.6;
+    opacity: 0.9;
+  }
+
+  .text-white {
+    color: white !important;
+  }
+  .bold {
+    font-weight: 700;
+  }
+  .mt-4 {
+    margin-top: 16px;
+  }
+  .mt-6 {
+    margin-top: 32px;
+  }
+
+  .btn-secondary {
+    background-color: transparent;
+    background: linear-gradient(to right, #ffffff, #e0f2fe);
+    color: var(--primary-dark);
+    padding: 14px 28px;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 14px;
+    transition: all 0.3s ease;
+  }
+
+  .btn-secondary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  }
+
+  @media (max-width: 992px) {
+    .consorcio-imob-section {
+      height: auto;
+      padding: 60px 0;
+    }
+    .imob-container {
+      flex-direction: column-reverse;
+      gap: 40px;
+    }
+    .imob-image-col,
+    .imob-content-col {
+      width: 100%;
+    }
+    .imob-content-col {
+      padding: 20px;
+      text-align: center;
+    }
+    .imob-real-img {
+      width: 100%;
+      margin: 0;
+      mask-image: none;
+      -webkit-mask-image: none;
+    }
+  }
+</style>

@@ -1,0 +1,193 @@
+---
+// src/components/ConsorcioAutomotivo/ConsorcioAutomotivo.astro
+---
+
+<section id="consorcio-automotivo" class="consorcio-auto-section">
+  <div class="container auto-container">
+    <div class="auto-content-col">
+      <div class="content-inner">
+        <h2 class="section-title">Consórcio Automotivo</h2>
+
+        <p class="section-text mt-4">
+          Imagine o momento em que você finalmente vira a chave do carro dos
+          seus sonhos e sente a emoção de conquistar essa nova liberdade. É mais
+          do que apenas um veículo; é a porta para novas experiências e
+          possibilidades, seja para viagens inesquecíveis, independência no dia
+          a dia, ou para realizar planos há muito tempo esperados.
+        </p>
+
+        <p class="section-text mt-4 bold text-dark">
+          Com o Consórcio Automotivo da Crown Consórcios, essa realização está
+          ao seu alcance, sem pressa e sem juros.
+        </p>
+
+        <p class="section-text mt-4">
+          Aqui, você participa de um processo inteligente e acessível para
+          adquirir o automóvel ideal, seja ele novo ou usado, com a certeza de
+          um investimento seguro que se encaixa no seu orçamento.
+        </p>
+
+        <div class="mt-6">
+          <a href="#solicitar" class="link-arrow">SAIBA MAIS &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="auto-image-col">
+      <img src="/carro.jpg" alt="Consórcio Automotivo" class="auto-real-img" />
+    </div>
+  </div>
+</section>
+
+<style>
+  .consorcio-auto-section {
+    padding: 100px 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    background-color: var(--bg-main);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .consorcio-auto-section {
+    padding: 100px 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    background-color: var(--bg-main);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .auto-container {
+    display: flex;
+    align-items: center;
+    width: 120%;
+    height: 100%;
+    max-width: 2200px;
+    margin: 0 auto;
+    gap: 200px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .auto-content-col {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+  }
+
+  .content-inner {
+    width: 100%;
+    margin: 0 auto;
+    max-width: 550px;
+  }
+
+  .text-dark {
+    color: var(--text-main);
+  }
+
+  .bold {
+    font-weight: 700;
+  }
+
+  .mt-4 {
+    margin-top: 16px;
+  }
+
+  .mt-6 {
+    margin-top: 32px;
+  }
+
+  .auto-image-col {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end; /* Alinha a imagem mais para a direita */
+    align-items: center;
+    height: 100%;
+    padding: 0; /* Removido padding para deixar a imagem ir até a borda */
+  }
+
+  .auto-real-img {
+    width: 200%;
+    margin-right: -400px;
+    max-width: 1200px;
+    height: auto;
+    object-fit: cover;
+    display: block;
+    -webkit-mask-image:
+      linear-gradient(
+        to right,
+        transparent 0%,
+        black 15%,
+        black 85%,
+        transparent 100%
+      ),
+      linear-gradient(
+        to bottom,
+        transparent 0%,
+        black 15%,
+        black 85%,
+        transparent 100%
+      );
+    -webkit-mask-composite: source-in;
+    mask-image:
+      linear-gradient(
+        to right,
+        transparent 0%,
+        black 15%,
+        black 85%,
+        transparent 100%
+      ),
+      linear-gradient(
+        to bottom,
+        transparent 0%,
+        black 15%,
+        black 85%,
+        transparent 100%
+      );
+    mask-composite: intersect;
+  }
+
+  .link-arrow {
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--text-main);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-transform: uppercase;
+    transition: color 0.3s;
+  }
+
+  .link-arrow:hover {
+    color: var(--primary);
+  }
+
+  @media (max-width: 992px) {
+    .consorcio-auto-section {
+      height: auto;
+      padding: 60px 0;
+    }
+    .auto-container {
+      flex-direction: column;
+      text-align: center;
+      width: 100%;
+      gap: 40px;
+    }
+    .auto-content-col,
+    .auto-image-col {
+      width: 100%;
+      padding: 20px;
+    }
+    .auto-real-img {
+      width: 100%;
+      margin: 0;
+      -webkit-mask-image: none;
+      mask-image: none;
+    }
+  }
+</style>

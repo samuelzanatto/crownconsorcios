@@ -1,0 +1,204 @@
+---
+// src/components/RedesSociais/RedesSociais.astro
+---
+
+<section id="redes" class="redes-section">
+  <!-- Fundo verde/azul cortado -->
+  <div class="redes-bg"></div>
+
+  <div class="container redes-container">
+    <div class="redes-card">
+      <div class="redes-content">
+        <h2 class="title">Siga-nos nas Redes Sociais</h2>
+        <p class="subtitle">
+          Acompanhe todas as novidades da Crown Consórcios nas redes sociais.
+        </p>
+        <p class="text">
+          Fique por dentro de promoções, oportunidades de grupos em andamento e conteúdos exclusivos que preparamos para você.
+        </p>
+
+        <div class="social-icons">
+          <a href="#" class="icon-link fb" aria-label="Facebook">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="white"
+              ><path
+                d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+              ></path></svg
+            >
+          </a>
+          <a href="#" class="icon-link ig" aria-label="Instagram">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="white"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              ><rect x="2" y="2" width="20" height="20" rx="5" ry="5"
+              ></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"
+              ></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg
+            >
+          </a>
+          <a href="#" class="icon-link wpp" aria-label="WhatsApp">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="white"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              ><path
+                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+              ></path></svg
+            >
+          </a>
+        </div>
+      </div>
+
+      <div class="redes-image">
+        <img src="/homem.png" alt="Homem apontando" class="redes-person-img" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .redes-section {
+    position: relative;
+    padding: 80px 0 0 0;
+    min-height: 400px;
+    background-color: var(--bg-main);
+  }
+
+  .redes-bg {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%; /* Metade inferior azul */
+    background-color: var(--primary-dark);
+    z-index: 1;
+  }
+
+  .redes-container {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+  }
+
+  .redes-card {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 900px;
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    transform: translateY(40px);
+  }
+
+  .redes-content {
+    flex: 1.2;
+    padding: 60px 40px;
+  }
+
+  .title {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 12px;
+  }
+
+  .subtitle {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-main);
+    margin-bottom: 12px;
+  }
+
+  .text {
+    font-size: 15px;
+    color: var(--text-light);
+    line-height: 1.6;
+    margin-bottom: 30px;
+  }
+
+  .social-icons {
+    display: flex;
+    gap: 12px;
+  }
+
+  .icon-link {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s;
+  }
+
+  .icon-link:hover {
+    transform: translateY(-4px);
+  }
+
+  .fb {
+    background-color: #3b5998;
+  }
+  .ig {
+    background: linear-gradient(
+      45deg,
+      #f09433 0%,
+      #e6683c 25%,
+      #dc2743 50%,
+      #cc2366 75%,
+      #bc1888 100%
+    );
+  }
+  .wpp {
+    background-color: #25d366;
+  }
+
+  .redes-image {
+    flex: 1;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    overflow: hidden;
+    min-height: 300px;
+  }
+
+  .redes-person-img {
+    max-height: 100%;
+    max-width: 100%;
+    width: auto;
+    height: 100%;
+    object-fit: contain;
+    object-position: bottom center;
+  }
+
+  @media (max-width: 992px) {
+    .redes-card {
+      flex-direction: column;
+    }
+
+    .redes-content {
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .social-icons {
+      justify-content: center;
+    }
+
+    .redes-image {
+      height: 300px;
+    }
+  }
+</style>

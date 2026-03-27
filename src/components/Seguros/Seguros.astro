@@ -1,0 +1,128 @@
+---
+// src/components/Seguros/Seguros.astro
+---
+
+<section id="seguros" class="seguros-section">
+  <div class="container seguros-container">
+    <div class="seg-content-col">
+      <div class="content-inner">
+        <h2 class="section-title">Seguros</h2>
+
+        <p class="section-text bold text-dark">
+          Na Crown Consórcios, sabemos que proteger o que você ama é uma das
+          decisões mais importantes que você pode tomar.
+        </p>
+
+        <p class="section-text mt-4">
+          Por isso, oferecemos uma gama completa de seguros que cobrem todas as
+          áreas da sua vida — do seu lar à sua saúde, do seu carro ao seu
+          futuro. Afinal, cada conquista merece ser resguardada para que você
+          possa aproveitá-la ao máximo, sem preocupações.
+        </p>
+
+        <p class="section-text mt-4">
+          Nosso compromisso é garantir que você possa viver tranquilo, sabendo
+          que está protegido contra os imprevistos que a vida pode trazer. Com a
+          Crown Consórcios, você conta com a segurança de um parceiro experiente
+          e confiável, que entende suas necessidades e está do seu lado em todos
+          os momentos.
+        </p>
+
+        <button class="btn-primary mt-6">VER MAIS</button>
+      </div>
+    </div>
+
+    <div class="seg-image-col">
+      <img src="/mulher.png" alt="Mulher" class="seg-real-img" />
+    </div>
+  </div>
+</section>
+
+<style>
+  .seguros-section {
+    padding: 100px 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    background-color: var(--bg-main);
+  }
+
+  .seguros-container {
+    display: flex;
+    align-items: center;
+    width: 120%;
+    max-width: 2200px;
+    margin: 0 auto;
+    gap: 200px;
+  }
+
+  .seg-content-col {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+  }
+
+  .content-inner {
+    width: 100%;
+    margin: 0 auto;
+    max-width: 550px;
+  }
+
+  .text-dark {
+    color: var(--text-main);
+  }
+
+  .bold {
+    font-weight: 700;
+  }
+
+  .mt-4 {
+    margin-top: 16px;
+  }
+
+  .mt-6 {
+    margin-top: 32px;
+  }
+
+  .seg-image-col {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+  }
+
+  .seg-real-img {
+    width: 100%;
+    margin-top: 13px;
+    max-width: 600px;
+    height: auto;
+    border-radius: 40px;
+    object-fit: cover;
+    display: block;
+  }
+
+  @media (max-width: 992px) {
+    .seguros-section {
+      height: auto;
+      padding: 60px 0;
+    }
+    .seguros-container {
+      flex-direction: column;
+      text-align: center;
+      width: 100%;
+      gap: 40px;
+    }
+    .seg-content-col,
+    .seg-image-col {
+      width: 100%;
+      padding: 20px;
+    }
+    .seg-real-img {
+      width: 100%;
+      margin-top: 0;
+    }
+  }
+</style>
