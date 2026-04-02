@@ -3,80 +3,105 @@
 ---
 
 <section id="quem-somos" class="quem-somos-section">
-  <div class="container qs-container">
-    <div class="qs-image-col">
-      <div class="qs-logo-wrapper">
-        <img src="/logo.png" alt="Crown Consórcios" class="qs-logo-img" />
+  <div class="qs-container container">
+    <div class="qs-text-col">
+      <div class="qs-header">
+        <h2 class="qs-pretitle">Por Dentro da</h2>
+        <div class="qs-crown-container">
+          <h3 class="qs-crown">CROWN</h3><div class="qs-line"></div>
+        </div>
       </div>
+
+      <p class="qs-text">
+        A CROWN CONSÓRCIOS nasceu com um propósito claro: transformar
+        planejamento financeiro em conquistas reais. Fundada em 17 de junho de
+        2020, a empresa atua com excelência na intermediação de consórcios,
+        oferecendo soluções inteligentes para quem deseja conquistar bens sem
+        juros abusivos e com mais controle financeiro.
+      </p>
+
+      <p class="qs-text">
+        Com sede em Campo Grande – MS, no coração da cidade, a Crown Corretagem
+        de Consórcios Ltda. se posiciona como uma parceira estratégica na
+        construção de patrimônio, conectando clientes às melhores oportunidades
+        do mercado com transparência, segurança e compromisso.
+      </p>
     </div>
 
-    <div class="qs-content-col">
-      <div class="content-inner">
-        <h2 class="section-title text-white">Quem somos</h2>
-        <p class="section-text text-white">
-          Na Crown Consórcios, acreditamos que cada cliente tem uma história única, e estamos aqui em Campo Grande (MS) para garantir que essas histórias sejam vividas com segurança e tranquilidade.
-        </p>
-
-        <p class="section-text text-white bold mt-4">
-          Nossa jornada começou com um propósito claro:
-        </p>
-
-        <p class="section-text text-white">
-          Proteger o que realmente importa para você e ajudar a realizar seus maiores sonhos, seja o primeiro carro, a casa própria ou a blindagem do seu patrimônio.
-        </p>
-
-        <p class="section-text text-white small mt-4 opacity-90">
-          Sabemos que adquirir um seguro ou consórcio vai muito além de um simples contrato; é um passo importante para assegurar seu futuro, e é por isso que nos dedicamos a oferecer soluções personalizadas, transparentes e que se ajustam perfeitamente à realidade dos sul-mato-grossenses.
-        </p>
-
-        <button class="btn-secondary mt-6" id="open-budget-dialog-qs"
-          >SOLICITAR ORÇAMENTO</button
-        >
-      </div>
+    <div class="qs-image-col">
+      <img
+        src="/images/vendedor.jpeg"
+        alt="Consultor Crown Consórcios"
+        class="qs-img"
+      />
     </div>
   </div>
 </section>
 
-<script>
-  const openBtnsQs = document.querySelectorAll("#open-budget-dialog-qs");
-  openBtnsQs.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      (
-        document.getElementById("budget-dialog") as HTMLDialogElement
-      )?.showModal();
-    });
-  });
-</script>
-
 <style>
   .quem-somos-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: relative;
     padding: 80px 0;
+    background: var(--primary);
     overflow: hidden;
-    background-color: var(--primary-dark);
-  }
-
-  .qs-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 60%;
-    height: 100%;
-    background-color: var(--primary);
-    border-radius: 0 100px 100px 0;
-    z-index: 1;
-    opacity: 0.5;
+    height: 800px;
   }
 
   .qs-container {
     position: relative;
     z-index: 2;
     display: flex;
-    align-items: stretch;
-    width: 100%;
-    max-width: 1600px;
-    margin: 0 auto;
-    gap: 120px;
+    align-items: center;
+    gap: 60px;
+  }
+
+  .qs-text-col {
+    flex: 1;
+    color: white;
+  }
+
+  .qs-header {
+    margin-bottom: 30px;
+  }
+
+  .qs-pretitle {
+    font-size: 64px;
+    color: white;
+    margin: 0;
+    font-weight: 900;
+    line-height: 1.2;
+  }
+
+  .qs-crown-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .qs-crown {
+    font-size: 56px;
+    font-weight: 900;
+    color: white;
+    letter-spacing: 2px;
+    margin: 4px 0 16px 0;
+    line-height: 1;
+  }
+
+  .qs-line {
+    width: 200px;
+    height: 6px;
+    background: white;
+  }
+
+  .qs-text {
+    font-size: 16px;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.92);
+    margin-bottom: 16px;
+    max-width: 520px;
   }
 
   .qs-image-col {
@@ -84,114 +109,32 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 100px;
   }
 
-  .qs-logo-wrapper {
+  .qs-img {
     width: 100%;
-    margin: 0 auto;
-    max-width: 400px;
-    height: 500px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-  }
-
-  .qs-logo-img {
-    max-width: 400px;
-    width: 100%;
-    margin-right: 100px;
+    max-width: 620px;
     height: auto;
-    filter: brightness(0) invert(1);
-  }
-
-  .qs-content-col {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-  }
-
-  .content-inner {
-    width: 100%;
-    margin: 0 auto;
-    max-width: 550px;
-  }
-
-  .text-white {
-    color: white !important;
-  }
-
-  .bold {
-    font-weight: 700;
-  }
-
-  .mt-4 {
-    margin-top: 16px;
-  }
-
-  .mt-6 {
-    margin-top: 32px;
-  }
-
-  .opacity-90 {
-    opacity: 0.9;
-  }
-
-  .small {
-    font-size: 15px;
-    line-height: 1.6;
-  }
-
-  .btn-secondary {
-    background-color: #d1e8d4; /* Um tom suave misturado (na imagem original é um verde claro). Como o tema mudou pra azul, usaremos um tom claro ou branco */
-    background: linear-gradient(to right, #ffffff, #e0f2fe);
-    color: var(--primary-dark);
-    padding: 14px 28px;
-    border-radius: 4px;
-    font-weight: 700;
-    font-size: 14px;
-    transition: all 0.3s ease;
-  }
-
-  .btn-secondary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    object-fit: cover;
+    border-radius: 16px;
   }
 
   @media (max-width: 992px) {
     .quem-somos-section {
-      height: auto;
       padding: 60px 0;
     }
+
     .qs-container {
-      flex-direction: column-reverse;
+      flex-direction: column;
       gap: 40px;
     }
 
-    .qs-image-col {
-      display: none;
+    .qs-crown {
+      font-size: 40px;
     }
 
-    .qs-content-col {
-      width: 100%;
-    }
-
-    .qs-bg {
-      width: 100%;
-      height: 40%;
-      border-radius: 0 0 100px 100px;
-    }
-
-    .qs-content-col {
-      text-align: center;
-      padding: 20px;
-    }
-
-    .qs-logo-img {
-      max-width: 200px;
+    .qs-img {
+      max-width: 100%;
     }
   }
 </style>

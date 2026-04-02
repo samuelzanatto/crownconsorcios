@@ -1,0 +1,144 @@
+---
+// src/components/WhatsApp/WhatsApp.astro
+---
+
+<section class="whatsapp-section">
+  <div class="whatsapp-container container">
+    <h2 class="whatsapp-title">Continue pelo Whatsapp</h2>
+    <p class="whatsapp-subtitle">
+      Nosso time está online! Tire dúvidas! <br /> Toque no botão e receba um atendimento
+      personalizado.
+    </p>
+
+    <div class="whatsapp-content">
+      <div class="avatars-row">
+        <img
+          class="avatar"
+          src="https://i.pravatar.cc/40?img=1"
+          alt="Consultor"
+        />
+        <img
+          class="avatar"
+          src="https://i.pravatar.cc/40?img=5"
+          alt="Consultor"
+        />
+        <img
+          class="avatar"
+          src="https://i.pravatar.cc/40?img=12"
+          alt="Consultor"
+        />
+        <img
+          class="avatar"
+          src="https://i.pravatar.cc/40?img=47"
+          alt="Consultor"
+        />
+        <img
+          class="avatar"
+          src="https://i.pravatar.cc/40?img=32"
+          alt="Consultor"
+        />
+      </div>
+
+      <a href="https://wa.me/5567000000" target="_blank" class="btn-whatsapp">
+        <svg
+          width="18"
+          height="18"
+          viewBox="0 0 32 32"
+          fill="currentColor"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M16.003 0C7.165 0 0 7.164 0 16c0 2.823.737 5.47 2.024 7.77L0 32l8.468-2.004A15.938 15.938 0 0 0 16.003 32C24.837 32 32 24.836 32 16S24.837 0 16.003 0zm0 29.292a13.243 13.243 0 0 1-6.738-1.843l-.483-.287-5.024 1.188 1.21-4.893-.315-.502A13.207 13.207 0 0 1 2.708 16c0-7.334 5.965-13.296 13.295-13.296 7.33 0 13.29 5.962 13.29 13.296 0 7.33-5.96 13.292-13.29 13.292zm7.291-9.961c-.4-.2-2.361-1.165-2.728-1.298-.366-.133-.632-.2-.898.2-.266.4-1.032 1.298-1.265 1.565-.234.266-.467.299-.867.1-2.293-1.147-3.798-2.048-5.3-4.64-.4-.686.4-.637.847-2.12.1-.2.05-.367-.033-.567-.083-.2-.9-2.161-1.232-2.96-.325-.78-.656-.673-.9-.687-.232-.013-.5-.016-.766-.016-.266 0-.699.1-1.065.5-.366.4-1.399 1.365-1.399 3.327 0 1.962 1.432 3.861 1.631 4.127.2.266 2.793 4.261 6.77 5.98 2.517 1.086 3.505 1.18 4.764.993.766-.114 2.361-.965 2.694-1.897.333-.932.333-1.731.233-1.897-.1-.166-.366-.266-.766-.466z"
+          ></path>
+        </svg>
+        Continue pelo Whatsapp
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .whatsapp-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 0;
+    height: 80vh;
+    background: white;
+  }
+
+  .whatsapp-container {
+    text-align: center;
+  }
+
+  .whatsapp-title {
+    font-size: 42px;
+    font-weight: 900;
+    color: var(--primary);
+    margin-bottom: 16px;
+  }
+
+  .whatsapp-subtitle {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.7;
+    color: var(--gray-light);
+    margin-bottom: 30px;
+  }
+
+  .whatsapp-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .avatars-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #d1d5db;
+    border: 3px solid white;
+    margin: 0 -6px;
+    object-fit: cover;
+  }
+
+  .btn-whatsapp {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: white;
+    color: #25d366;
+    padding: 14px 32px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    border: 2px solid #25d366;
+  }
+
+  .btn-whatsapp:hover {
+    background: #25d366;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(37, 211, 102, 0.3);
+  }
+
+  @media (max-width: 768px) {
+    .whatsapp-section {
+      padding: 60px 0;
+    }
+
+    .whatsapp-title {
+      font-size: 28px;
+    }
+  }
+</style>

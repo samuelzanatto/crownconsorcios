@@ -3,29 +3,40 @@
 ---
 
 <header class="header">
-  <div class="container header-container">
+  <div class="header-container container">
     <a href="/" class="logo">
-      <img src="/logo.png" alt="Múltipla Representações" />
+      <img src="/logo.png" alt="Crown Consórcios" class="logo-img" />
     </a>
-
-    <button class="menu-toggle" aria-label="Abrir menu" id="mobile-menu-btn">
-      <span class="bar"></span>
-      <span class="bar"></span>
-      <span class="bar"></span>
-    </button>
 
     <nav class="desktop-nav" id="main-nav">
       <ul>
-        <li><a href="/" class="active">HOME</a></li>
-        <li><a href="#quem-somos">QUEM SOMOS</a></li>
-        <li><a href="#seguros">SEGUROS</a></li>
-        <li><a href="#consorcio-imobiliario">CONSÓRCIO IMOBILIÁRIO</a></li>
-        <li><a href="#consorcio-automotivo">CONSÓRCIO AUTOMOTIVO</a></li>
+        <li><a href="#" class="nav-link active">Início</a></li>
+        <li><a href="#seguros" class="nav-link">Seguros</a></li>
+        <li><a href="#quem-somos" class="nav-link">Quem somos</a></li>
+        <li><a href="#consorcios" class="nav-link">Consórcios</a></li>
+        <li><a href="#redes" class="nav-link">Contato</a></li>
       </ul>
-      <div class="actions">
-        <button class="btn-primary" id="open-budget-dialog">SOLICITAR ORÇAMENTO</button>
-      </div>
     </nav>
+
+    <div class="header-actions">
+      <!-- Hamburger icon (mobile only) -->
+      <button class="menu-toggle" aria-label="Abrir menu" id="mobile-menu-btn">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div class="mobile-nav container" id="mobile-nav">
+    <ul>
+      <li><a href="#" class="nav-link active">Início</a></li>
+      <li><a href="#seguros" class="nav-link">Seguros</a></li>
+      <li><a href="#quem-somos" class="nav-link">Quem somos</a></li>
+      <li><a href="#consorcios" class="nav-link">Consórcios</a></li>
+      <li><a href="#redes" class="nav-link">Contato</a></li>
+    </ul>
   </div>
 </header>
 
@@ -41,190 +52,240 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 110px;
-    gap: 64px;
-    padding: 0 40px;
-    max-width: 1560px;
-    margin: 0 auto;
-    position: relative;
+    height: 100px;
   }
 
   .logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
     z-index: 1000;
   }
 
-  .logo img {
-    height: 36px;
-    object-fit: contain;
-    filter: brightness(0);
+  .logo-img {
+    height: 30px;
+    width: auto;
+    filter: brightness(0) saturate(100%);
   }
 
   .desktop-nav {
     display: flex;
     align-items: center;
-    flex: 1;
     justify-content: flex-end;
+    flex: 1;
+    margin-left: 32px;
   }
 
   .desktop-nav ul {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
     display: flex;
-    gap: 32px;
+    gap: 8px;
     margin: 0;
     padding: 0;
     list-style: none;
   }
 
-  .desktop-nav a {
-    font-size: 14px;
+  .nav-link {
+    font-size: 13px;
     font-weight: 600;
-    color: var(--text-main);
-    text-transform: uppercase;
-    transition: color 0.3s;
+    color: var(--gray-dark);
     text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    padding: 8px 18px;
+    border-radius: 50px;
+    background-color: transparent;
   }
 
-  .desktop-nav a:hover,
-  .desktop-nav a.active {
-    color: var(--primary);
+  .nav-link:hover {
+    background-color: #f0f0f0;
   }
 
-  .actions {
+  .nav-link.active {
+    background-color: var(--gray-dark);
+    color: white;
+  }
+
+  .header-actions {
     display: flex;
     align-items: center;
+    gap: 16px;
   }
 
   .menu-toggle {
     display: none;
     flex-direction: column;
     justify-content: space-between;
-    width: 30px;
-    height: 21px;
+    width: 24px;
+    height: 18px;
     background: transparent;
     border: none;
     cursor: pointer;
     z-index: 1000;
+    padding: 0;
   }
 
   .menu-toggle .bar {
-    height: 3px;
+    height: 2px;
     width: 100%;
-    background-color: var(--text-main);
-    border-radius: 3px;
+    background-color: var(--gray-dark);
+    border-radius: 2px;
     transition: all 0.3s ease;
   }
 
   .menu-toggle.open .bar:nth-child(1) {
-    transform: translateY(9px) rotate(45deg);
+    transform: translateY(8px) rotate(45deg);
   }
+
   .menu-toggle.open .bar:nth-child(2) {
     opacity: 0;
   }
+
   .menu-toggle.open .bar:nth-child(3) {
-    transform: translateY(-9px) rotate(-45deg);
+    transform: translateY(-8px) rotate(-45deg);
   }
 
-  @media (max-width: 1024px) {
-    .logo img {
-      height: 28px;
+  .mobile-nav {
+    display: none;
+    background: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.3s ease;
+  }
+
+  .mobile-nav.open {
+    max-height: 300px;
+  }
+
+  .mobile-nav ul {
+    list-style: none;
+    padding: 16px 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .mobile-nav ul li {
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  .mobile-nav ul li:last-child {
+    border-bottom: none;
+  }
+
+  .mobile-nav .nav-link {
+    display: block;
+    padding: 14px 0;
+    font-size: 14px;
+    border-bottom: none;
+  }
+
+  @media (min-width: 993px) {
+    .mobile-nav {
+      display: none !important;
+    }
+
+    .menu-toggle {
+      display: none !important;
     }
   }
 
   @media (max-width: 992px) {
     .header-container {
-      height: 80px;
-      padding: 0 20px;
+      height: 60px;
+    }
+
+    .desktop-nav {
+      display: none;
+    }
+
+    .mobile-nav {
+      display: block;
     }
 
     .menu-toggle {
       display: flex;
     }
-
-    .desktop-nav {
-      position: absolute;
-      top: 80px;
-      left: 0;
-      width: 100%;
-      background: white;
-      box-shadow: 0 10px 15px rgba(0,0,0,0.1);
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      padding: 0;
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
-      gap: 30px;
-      z-index: 998;
-    }
-
-    .desktop-nav.open {
-      max-height: 500px;
-      padding: 30px 20px;
-    }
-
-    .desktop-nav ul {
-      position: static;
-      transform: none;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
-      width: 100%;
-    }
-
-    .desktop-nav a {
-      font-size: 16px;
-    }
-
-    .actions {
-      width: 100%;
-      justify-content: center;
-    }
-    
-    .actions .btn-primary {
-      width: 100%;
-    }
   }
 </style>
 
 <script>
-  const menuBtn = document.getElementById('mobile-menu-btn');
-  const mainNav = document.getElementById('main-nav');
-  const navLinks = mainNav?.querySelectorAll('a');
+  // Script original de toggle de menu
+  const menuBtn = document.getElementById("mobile-menu-btn");
+  const mobileNav = document.getElementById("mobile-nav");
+  const navLinks = mobileNav?.querySelectorAll("a");
 
-  if (menuBtn && mainNav) {
-    menuBtn.addEventListener('click', () => {
-      menuBtn.classList.toggle('open');
-      mainNav.classList.toggle('open');
+  if (menuBtn && mobileNav) {
+    menuBtn.addEventListener("click", () => {
+      menuBtn.classList.toggle("open");
+      mobileNav.classList.toggle("open");
     });
   }
 
   if (navLinks) {
-    navLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        menuBtn?.classList.remove('open');
-        mainNav?.classList.remove('open');
+    navLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        menuBtn?.classList.remove("open");
+        mobileNav?.classList.remove("open");
       });
     });
   }
 
-  const btnMobile = document.getElementById("open-budget-dialog");
-  if (btnMobile) {
-    btnMobile.addEventListener("click", () => {
-      const dialogArea = document.getElementById("budget-dialog-area");
-      if (dialogArea) {
-        dialogArea.style.display = "flex";
-        requestAnimationFrame(() => {
-          dialogArea.classList.add("show");
-          const bottomSheet = dialogArea.querySelector(".bottom-sheet");
-          if (bottomSheet) bottomSheet.classList.add("show");
+  // Scroll Spy para mudar de forma suave e automática o link ativo conforme a rolagem
+  function initScrollSpy() {
+    const headerLinks = document.querySelectorAll('.nav-link');
+    
+    // Mapeia os links para seus IDs de destino
+    const linksMap = Array.from(headerLinks).map(link => {
+      const href = link.getAttribute('href') || '#';
+      // Trata inicio "#" como null e outras seções removem o "#"
+      const targetId = (href.startsWith('#') && href.length > 1) ? href.substring(1) : null;
+      return { link, targetId, href };
+    });
+
+    window.addEventListener('scroll', () => {
+      const scrollPos = window.scrollY;
+      
+      // Se tiver bem no topo da página
+      if (scrollPos < 150) {
+        linksMap.forEach(item => {
+          item.link.classList.remove('active');
+          if (item.href === '#') {
+            item.link.classList.add('active');
+          }
+        });
+        return;
+      }
+
+      // Encontrar todas as seções que existem na tela e possuam ID relacionado a um link
+      const sections = linksMap
+        .filter(item => item.targetId)
+        .map(item => document.getElementById(item.targetId || ''))
+        .filter(Boolean); // filtra nulos
+
+      let currentSectionId = null;
+
+      // Pega a seção mais abaixo cujo topo já passou do meio da tela
+      for (const section of sections) {
+        if (!section) continue;
+        const offset = section.offsetTop - 200; // margem para ativação antes de chegar nela
+        if (scrollPos >= offset) {
+          currentSectionId = section.getAttribute('id');
+        }
+      }
+
+      // Atualiza os links
+      if (currentSectionId) {
+        linksMap.forEach(item => {
+          item.link.classList.remove('active');
+          if (item.targetId === currentSectionId) {
+            item.link.classList.add('active');
+          }
         });
       }
     });
   }
+
+  // Aciona logo no carregamento caso não abra a página no topo
+  document.addEventListener('DOMContentLoaded', initScrollSpy);
 </script>

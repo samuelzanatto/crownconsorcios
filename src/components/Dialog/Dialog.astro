@@ -3,66 +3,323 @@
 ---
 
 <dialog id="budget-dialog" class="budget-dialog">
-  <div class="dialog-header">
-    <h3>Solicitar Orçamento</h3>
-    <button class="close-btn" id="close-budget-dialog" aria-label="Fechar">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-    </button>
+  <!-- Form View -->
+  <div id="dialog-form-view">
+    <div class="dialog-header">
+      <div>
+        <h3>Solicitar Orçamento</h3>
+        <p class="dialog-subtitle">Preencha seus dados e entraremos em contato</p>
+      </div>
+      <button class="close-btn" id="close-budget-dialog" aria-label="Fechar">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+    </div>
+
+    <form class="budget-form" id="budget-form">
+      <!-- Pre-filled fields from hero -->
+      <div class="form-row">
+        <div class="form-group">
+          <label>Localização</label>
+          <div class="dialog-custom-select" data-name="localizacao">
+            <button type="button" class="dcs-trigger" aria-haspopup="listbox">
+              <span class="dcs-value" id="dialog-localizacao-value">Campo Grande</span>
+              <svg class="dcs-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none">
+                <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </button>
+            <ul class="dcs-dropdown" role="listbox">
+              <li role="option" data-value="Campo Grande" class="selected">Campo Grande</li>
+              <li role="option" data-value="Dourados">Dourados</li>
+              <li role="option" data-value="Três Lagoas">Três Lagoas</li>
+              <li role="option" data-value="Corumbá">Corumbá</li>
+              <li role="option" data-value="Outra cidade">Outra cidade</li>
+            </ul>
+            <input type="hidden" name="localizacao" id="dialog-localizacao" value="Campo Grande" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Tipo de Consórcio</label>
+          <div class="dialog-custom-select" data-name="consorcio">
+            <button type="button" class="dcs-trigger" aria-haspopup="listbox">
+              <span class="dcs-value" id="dialog-consorcio-value">Imobiliário</span>
+              <svg class="dcs-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none">
+                <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </button>
+            <ul class="dcs-dropdown" role="listbox">
+              <li role="option" data-value="Imobiliário" class="selected">Imobiliário</li>
+              <li role="option" data-value="Automotivo">Automotivo</li>
+              <li role="option" data-value="Imobiliário e Automotivo">Ambos</li>
+            </ul>
+            <input type="hidden" name="consorcio" id="dialog-consorcio" value="Imobiliário" />
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="dialog-entrada">Valor de Entrada</label>
+          <input type="text" id="dialog-entrada" name="entrada" placeholder="R$ 10.000" required />
+        </div>
+        <div class="form-group">
+          <label>Valor do Consórcio</label>
+          <div class="dialog-custom-select" data-name="valor">
+            <button type="button" class="dcs-trigger" aria-haspopup="listbox">
+              <span class="dcs-value dcs-placeholder">Selecione</span>
+              <svg class="dcs-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none">
+                <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </button>
+            <ul class="dcs-dropdown" role="listbox">
+              <li role="option" data-value="Até R$ 50.000">Até R$ 50.000</li>
+              <li role="option" data-value="R$ 50.000 a R$ 100.000">R$ 50k – R$ 100k</li>
+              <li role="option" data-value="R$ 100.000 a R$ 250.000">R$ 100k – R$ 250k</li>
+              <li role="option" data-value="R$ 250.000 a R$ 500.000">R$ 250k – R$ 500k</li>
+              <li role="option" data-value="Acima de R$ 500.000">Acima de R$ 500k</li>
+            </ul>
+            <input type="hidden" name="valor" value="" />
+          </div>
+        </div>
+      </div>
+
+      <div class="form-divider"></div>
+
+      <div class="form-group">
+        <label for="dialog-name">Nome completo</label>
+        <input type="text" id="dialog-name" name="nome" placeholder="Digite seu nome" required />
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="dialog-email">E-mail</label>
+          <input type="email" id="dialog-email" name="email" placeholder="seu@email.com" required />
+        </div>
+        <div class="form-group">
+          <label for="dialog-phone">Telefone / WhatsApp</label>
+          <input type="tel" id="dialog-phone" name="telefone" placeholder="(67) 99999-9999" required />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="dialog-message">Mensagem (opcional)</label>
+        <textarea id="dialog-message" name="mensagem" placeholder="Descreva o que você busca..." rows="3"></textarea>
+      </div>
+
+      <button type="submit" class="btn-primary submit-btn" id="submit-btn">
+        <span id="submit-text">Enviar Solicitação</span>
+        <span id="submit-loading" class="loading-spinner" style="display:none;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+          </svg>
+        </span>
+      </button>
+    </form>
   </div>
-  
-  <form class="budget-form">
-    <div class="form-group">
-      <label for="name">Nome completo</label>
-      <input type="text" id="name" name="name" placeholder="Digite seu nome" required />
+
+  <!-- Success View -->
+  <div id="dialog-success-view" style="display:none;">
+    <div class="success-content">
+      <div class="success-icon">
+        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+          <polyline points="22 4 12 14.01 9 11.01"/>
+        </svg>
+      </div>
+      <h3 class="success-title">Solicitação enviada!</h3>
+      <p class="success-text">
+        Recebemos seus dados com sucesso.<br/>
+        Nossa equipe entrará em contato em breve para ajudá-lo a conquistar seu objetivo.
+      </p>
+      <button class="btn-primary success-close-btn" id="success-close-btn">Fechar</button>
     </div>
-    <div class="form-group">
-      <label for="email">E-mail</label>
-      <input type="email" id="email" name="email" placeholder="Seu melhor e-mail" required />
-    </div>
-    <div class="form-group">
-      <label for="phone">Telefone / WhatsApp</label>
-      <input type="tel" id="phone" name="phone" placeholder="(00) 00000-0000" required />
-    </div>
-    <div class="form-group">
-      <label for="value">Valor do Consórcio</label>
-      <select id="value" name="value" required>
-        <option value="" disabled selected>Selecione um valor desejado</option>
-        <option value="50k-100k">R$ 50.000 a R$ 100.000</option>
-        <option value="100k-250k">R$ 100.000 a R$ 250.000</option>
-        <option value="250k-500k">R$ 250.000 a R$ 500.000</option>
-        <option value="500k+">Acima de R$ 500.000</option>
-      </select>
-    </div>
-    <button type="submit" class="btn-primary submit-btn">Enviar Solicitação</button>
-  </form>
+  </div>
 </dialog>
 
 <script>
-  // Script associado ao dialog e botão do header. Em Astro, os scripts são empacotados pelo vite.
-  const dialog = document.getElementById('budget-dialog') as HTMLDialogElement;
-  const openBtns = document.querySelectorAll('#open-budget-dialog, #open-budget-dialog-mobile, #open-budget-dialog-hero');
-  const closeBtn = document.getElementById('close-budget-dialog');
+  // ============================================
+  // CONFIGURAÇÃO: Cole aqui a URL do seu Google Apps Script
+  // ============================================
+  const GOOGLE_SCRIPT_URL = '';
 
+  const dialog = document.getElementById('budget-dialog') as HTMLDialogElement;
+  const form = document.getElementById('budget-form') as HTMLFormElement;
+  const formView = document.getElementById('dialog-form-view')!;
+  const successView = document.getElementById('dialog-success-view')!;
+  const closeBtn = document.getElementById('close-budget-dialog');
+  const successCloseBtn = document.getElementById('success-close-btn');
+  const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
+  const submitText = document.getElementById('submit-text')!;
+  const submitLoading = document.getElementById('submit-loading')!;
+
+  // ===== Custom Select Logic =====
+  document.querySelectorAll('.dialog-custom-select').forEach(select => {
+    const trigger = select.querySelector('.dcs-trigger') as HTMLButtonElement;
+    const valueSpan = select.querySelector('.dcs-value') as HTMLSpanElement;
+    const hiddenInput = select.querySelector('input[type="hidden"]') as HTMLInputElement;
+    const options = select.querySelectorAll('[role="option"]');
+
+    trigger?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      // Close all other dropdowns
+      document.querySelectorAll('.dialog-custom-select.open').forEach(s => {
+        if (s !== select) s.classList.remove('open');
+      });
+      select.classList.toggle('open');
+    });
+
+    options.forEach(option => {
+      option.addEventListener('click', () => {
+        const value = (option as HTMLElement).dataset.value || '';
+        valueSpan.textContent = option.textContent;
+        valueSpan.classList.remove('dcs-placeholder');
+        hiddenInput.value = value;
+        options.forEach(o => o.classList.remove('selected'));
+        option.classList.add('selected');
+        select.classList.remove('open');
+      });
+    });
+  });
+
+  // Close dropdowns on click outside
+  document.addEventListener('click', (e) => {
+    const target = e.target as HTMLElement;
+    if (!target.closest('.dialog-custom-select')) {
+      document.querySelectorAll('.dialog-custom-select.open').forEach(s => s.classList.remove('open'));
+    }
+  });
+
+  // ===== Helper: set custom select value programmatically =====
+  function setDialogSelectValue(selectEl: Element, value: string) {
+    const hiddenInput = selectEl.querySelector('input[type="hidden"]') as HTMLInputElement;
+    const valueSpan = selectEl.querySelector('.dcs-value') as HTMLSpanElement;
+    const options = selectEl.querySelectorAll('[role="option"]');
+
+    options.forEach(opt => {
+      const optEl = opt as HTMLElement;
+      if (optEl.dataset.value === value) {
+        optEl.classList.add('selected');
+        valueSpan.textContent = optEl.textContent;
+        valueSpan.classList.remove('dcs-placeholder');
+        hiddenInput.value = value;
+      } else {
+        optEl.classList.remove('selected');
+      }
+    });
+  }
+
+  // Expose for Hero to call
+  (window as any).__setDialogSelect = setDialogSelectValue;
+
+  // Also allow opening from other buttons
+  const openBtns = document.querySelectorAll('#open-budget-dialog, #open-budget-dialog-mobile');
   openBtns.forEach(btn => {
     btn.addEventListener('click', () => {
+      resetDialog();
       dialog?.showModal();
     });
   });
 
-  closeBtn?.addEventListener('click', () => {
-    dialog?.close();
+  // Animated close function
+  function closeWithAnimation() {
+    if (!dialog || dialog.classList.contains('closing')) return;
+    dialog.classList.add('closing');
+    dialog.addEventListener('animationend', () => {
+      dialog.classList.remove('closing');
+      dialog.close();
+    }, { once: true });
+  }
+
+  // Close handlers
+  closeBtn?.addEventListener('click', () => closeWithAnimation());
+  successCloseBtn?.addEventListener('click', () => closeWithAnimation());
+
+  // Click outside to close
+  dialog?.addEventListener('click', (e) => {
+    const rect = dialog.getBoundingClientRect();
+    if (
+      e.clientX < rect.left ||
+      e.clientX > rect.right ||
+      e.clientY < rect.top ||
+      e.clientY > rect.bottom
+    ) {
+      closeWithAnimation();
+    }
   });
 
-  // Fechar ao clicar fora
-  dialog?.addEventListener('click', (e) => {
-    const dialogDimensions = dialog.getBoundingClientRect()
-    if (
-      e.clientX < dialogDimensions.left ||
-      e.clientX > dialogDimensions.right ||
-      e.clientY < dialogDimensions.top ||
-      e.clientY > dialogDimensions.bottom
-    ) {
-      dialog.close()
+  // Escape key close with animation
+  dialog?.addEventListener('cancel', (e) => {
+    e.preventDefault();
+    closeWithAnimation();
+  });
+
+  // Reset dialog when closed
+  dialog?.addEventListener('close', () => {
+    resetDialog();
+  });
+
+  function resetDialog() {
+    formView.style.display = '';
+    successView.style.display = 'none';
+    submitBtn.disabled = false;
+    submitText.style.display = '';
+    submitLoading.style.display = 'none';
+    // Close any open dropdowns
+    document.querySelectorAll('.dialog-custom-select.open').forEach(s => s.classList.remove('open'));
+  }
+
+  // Phone mask
+  const phoneInput = document.getElementById('dialog-phone') as HTMLInputElement;
+  phoneInput?.addEventListener('input', () => {
+    let v = phoneInput.value.replace(/\D/g, '');
+    if (v.length > 11) v = v.slice(0, 11);
+    if (v.length > 6) {
+      phoneInput.value = `(${v.slice(0,2)}) ${v.slice(2,7)}-${v.slice(7)}`;
+    } else if (v.length > 2) {
+      phoneInput.value = `(${v.slice(0,2)}) ${v.slice(2)}`;
+    } else if (v.length > 0) {
+      phoneInput.value = `(${v}`;
+    }
+  });
+
+  // Form submission
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    // Show loading
+    submitBtn.disabled = true;
+    submitText.style.display = 'none';
+    submitLoading.style.display = 'inline-flex';
+
+    const formData = new FormData(form);
+    const data: Record<string, string> = {};
+    formData.forEach((value, key) => {
+      data[key] = value.toString();
+    });
+
+    data['data_envio'] = new Date().toLocaleString('pt-BR');
+
+    try {
+      if (GOOGLE_SCRIPT_URL) {
+        await fetch(GOOGLE_SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        });
+      } else {
+        console.log('📋 Dados do formulário (configure GOOGLE_SCRIPT_URL para enviar):', data);
+        await new Promise(resolve => setTimeout(resolve, 800));
+      }
+
+      formView.style.display = 'none';
+      successView.style.display = '';
+      form.reset();
+
+    } catch (error) {
+      console.error('Erro ao enviar:', error);
+      formView.style.display = 'none';
+      successView.style.display = '';
+      form.reset();
     }
   });
 </script>
@@ -72,25 +329,33 @@
     padding: 0;
     margin: auto;
     border: none;
-    border-radius: 12px;
+    border-radius: 16px;
     background: white;
     width: 90%;
-    max-width: 500px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-    /* Início invisível para animação */
+    max-width: 560px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
     opacity: 0;
+    overflow: visible;
   }
 
   .budget-dialog::backdrop {
     background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(3px);
+    backdrop-filter: blur(4px);
   }
 
   .budget-dialog[open] {
-    animation: slideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation: dialogIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 
-  @keyframes slideIn {
+  .budget-dialog.closing {
+    animation: dialogOut 0.3s cubic-bezier(0.4, 0, 1, 1) forwards;
+  }
+
+  .budget-dialog.closing::backdrop {
+    animation: backdropOut 0.3s ease forwards;
+  }
+
+  @keyframes dialogIn {
     from {
       opacity: 0;
       transform: translateY(-40px) scale(0.95);
@@ -101,19 +366,41 @@
     }
   }
 
+  @keyframes dialogOut {
+    from {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+    to {
+      opacity: 0;
+      transform: translateY(20px) scale(0.95);
+    }
+  }
+
+  @keyframes backdropOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+  }
+
   .dialog-header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    padding: 20px 24px;
-    border-bottom: 1px solid #eeeeee;
+    align-items: flex-start;
+    padding: 24px 24px 16px;
+    border-bottom: 1px solid #f0f0f0;
   }
 
   .dialog-header h3 {
     margin: 0;
-    color: var(--primary);
+    color: var(--gray-dark);
     font-size: 20px;
     font-weight: 700;
+  }
+
+  .dialog-subtitle {
+    margin: 4px 0 0;
+    font-size: 13px;
+    color: var(--gray-light);
   }
 
   .close-btn {
@@ -126,6 +413,7 @@
     width: 36px;
     height: 36px;
     transition: background 0.2s, color 0.2s;
+    flex-shrink: 0;
   }
 
   .close-btn:hover {
@@ -134,45 +422,277 @@
   }
 
   .budget-form {
-    padding: 24px;
+    padding: 20px 24px 24px;
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 14px;
+    max-height: 65vh;
+    overflow-y: auto;
+    overflow-x: visible;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  .form-divider {
+    height: 1px;
+    background: #f0f0f0;
+    margin: 4px 0;
   }
 
   .form-group {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 6px;
+    position: relative;
   }
 
   .form-group label {
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 600;
     color: var(--text-main);
   }
 
-  .form-group input, .form-group select {
-    padding: 12px 14px;
-    border: 1px solid #dddddd;
-    border-radius: 6px;
-    font-size: 15px;
-    font-family: 'Poppins', sans-serif;
+  .form-group input,
+  .form-group textarea {
+    padding: 10px 12px;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 14px;
+    font-family: 'Montserrat', sans-serif;
     color: var(--text-main);
-    transition: border-color 0.3s;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    background: #fafafa;
   }
 
-  .form-group input:focus, .form-group select:focus {
+  .form-group textarea {
+    resize: vertical;
+    min-height: 70px;
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus {
     border-color: var(--primary);
+    background: white;
     outline: none;
+    box-shadow: 0 0 0 3px rgba(34, 97, 255, 0.08);
   }
 
-  .submit-btn {
-    margin-top: 8px;
+  .form-group input::placeholder,
+  .form-group textarea::placeholder {
+    color: #bbb;
+  }
+
+  /* ===== Dialog Custom Select ===== */
+  .dialog-custom-select {
+    position: relative;
+  }
+
+  .dcs-trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     width: 100%;
-    font-size: 16px;
-    padding: 14px;
+    background: #fafafa;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 10px 12px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--gray-dark);
+    cursor: pointer;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    text-align: left;
   }
 
+  .dcs-trigger:hover {
+    border-color: #ccc;
+  }
 
+  .dcs-trigger:focus {
+    border-color: var(--primary);
+    background: white;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(34, 97, 255, 0.08);
+  }
+
+  .dcs-value {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .dcs-value.dcs-placeholder {
+    color: #bbb;
+    font-weight: 400;
+  }
+
+  .dcs-arrow {
+    color: #aaa;
+    flex-shrink: 0;
+    transition: transform 0.25s ease;
+  }
+
+  .dialog-custom-select.open .dcs-arrow {
+    transform: rotate(180deg);
+  }
+
+  .dialog-custom-select.open .dcs-trigger {
+    border-color: var(--primary);
+    background: white;
+    box-shadow: 0 0 0 3px rgba(34, 97, 255, 0.08);
+  }
+
+  .dcs-dropdown {
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    width: 100%;
+    background: white;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    padding: 8px 6px;
+    margin: 0;
+    list-style: none;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+    z-index: 200;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .dialog-custom-select.open .dcs-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .dcs-dropdown li {
+    padding: 10px 14px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--gray-dark);
+    cursor: pointer;
+    white-space: nowrap;
+    border-radius: 8px;
+    margin-bottom: 2px;
+    transition: all 0.2s ease;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .dcs-dropdown li:last-child {
+    margin-bottom: 0;
+  }
+
+  .dcs-dropdown li:hover {
+    background: #f0f4ff;
+    color: var(--primary);
+  }
+
+  .dcs-dropdown li.selected {
+    color: var(--primary);
+    font-weight: 600;
+    background: rgba(34, 97, 255, 0.06);
+  }
+
+  /* ===== Submit ===== */
+  .submit-btn {
+    margin-top: 4px;
+    width: 100%;
+    font-size: 15px;
+    padding: 14px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .loading-spinner {
+    display: inline-flex;
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  /* Success View */
+  .success-content {
+    padding: 48px 32px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .success-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: rgba(34, 97, 255, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8px;
+    animation: scaleIn 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.5);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .success-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--gray-dark);
+    margin: 0;
+  }
+
+  .success-text {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--gray-light);
+    margin: 0;
+    max-width: 360px;
+  }
+
+  .success-close-btn {
+    margin-top: 8px;
+    padding: 12px 40px;
+    border-radius: 12px;
+  }
+
+  @media (max-width: 600px) {
+    .budget-dialog {
+      width: 95%;
+      border-radius: 16px;
+    }
+
+    .form-row {
+      grid-template-columns: 1fr;
+    }
+
+    .budget-form {
+      padding: 16px 20px 20px;
+    }
+
+    .dialog-header {
+      padding: 20px 20px 14px;
+    }
+  }
 </style>

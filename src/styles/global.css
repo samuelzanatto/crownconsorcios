@@ -1,13 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap');
 
 :root {
-  --primary: #2878b8;
+  --primary: #2261FF;
   /* Darker shade for hovers/secondary use */
-  --primary-dark: #1b5380;
+  --primary-dark: #1a47cc;
   /* Lighter shade for accents */
-  --primary-light: #3f92d4;
+  --primary-light: #4d7dff;
 
-  --text-main: #333333;
+  --gray-dark: #2F2F2F;
+  --gray-light: #666666;
+
+  --text-main: #2F2F2F;
   --text-light: #666666;
   --bg-main: #ffffff;
   --bg-section: #f9f9f9;
@@ -21,7 +24,7 @@ html {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 body {
@@ -43,14 +46,20 @@ button {
   cursor: pointer;
   border: none;
   outline: none;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .container {
-  max-width: 1400px;
+  max-width: 1560px;
   margin: 0 auto;
-  padding: 0 15px;
+  padding: 0 0px;
   width: 100%;
+}
+
+@media (max-width: 992px) {
+  .container {
+    padding: 0 20px;
+  }
 }
 
 .btn-primary {
@@ -67,35 +76,4 @@ button {
 .btn-primary:hover {
   background-color: var(--primary-dark);
   box-shadow: 0 4px 12px rgba(40, 120, 184, 0.3);
-}
-
-.section-title {
-  font-size: 32px;
-  font-weight: 700;
-  color: var(--primary);
-  margin-bottom: 20px;
-}
-
-.section-text {
-  font-size: 16px;
-  line-height: 1.6;
-  color: var(--text-light);
-  margin-bottom: 30px;
-}
-
-/* Helpers */
-.flex {
-  display: flex;
-}
-
-.items-center {
-  align-items: center;
-}
-
-.justify-between {
-  justify-content: space-between;
-}
-
-.gap-4 {
-  gap: 1rem;
 }

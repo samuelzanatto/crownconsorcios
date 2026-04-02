@@ -3,141 +3,519 @@
 ---
 
 <section class="hero-section">
-  <div class="container hero-container">
+  <div class="hero-container container">
     <div class="hero-content">
       <h1>
-        <span class="light">Proteja seu futuro</span><br />
-        <span class="light">com os nossos</span><br />
-        <span class="bold">Seguros e Consórcios Personalizados</span>
+        Seu <em>futuro</em> começa<br />com um <em>imóvel!</em>
       </h1>
-      <p>
-        Oferecemos proteção e planejamento para o que é mais<br />
-        importante na sua vida, garantindo segurança e tranquilidade<br />
-        para você e sua família alcançarem seus maiores objetivos.
+      <p class="hero-description">
+        Na CROWN CONSÓRCIOS, seu sonho deixa de ser plano e vira estratégia —
+        com menos custo, mais controle e um caminho claro até a sua conquista.
       </p>
-      <button
-        class="btn-primary mt-6"
-        id="open-budget-dialog-hero"
-        style="margin-top: 32px;"
-      >
-        SIMULAR CONSÓRCIO
-      </button>
+
+      <div class="hero-info-bar" id="hero-form">
+        <!-- Localização -->
+        <div class="info-item">
+          <span class="info-label">Localização</span>
+          <div class="custom-select" data-name="localizacao">
+            <button
+              type="button"
+              class="select-trigger"
+              aria-haspopup="listbox"
+            >
+              <span class="select-value">Campo Grande</span>
+              <svg
+                class="select-arrow"
+                width="10"
+                height="6"
+                viewBox="0 0 10 6"
+                fill="none"
+              >
+                <path
+                  d="M1 1l4 4 4-4"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"></path>
+              </svg>
+            </button>
+            <ul class="select-dropdown" role="listbox">
+              <li role="option" data-value="Campo Grande" class="selected">
+                Campo Grande
+              </li>
+              <li role="option" data-value="Dourados">Dourados</li>
+              <li role="option" data-value="Três Lagoas">Três Lagoas</li>
+              <li role="option" data-value="Corumbá">Corumbá</li>
+              <li role="option" data-value="Outra cidade">Outra cidade</li>
+            </ul>
+            <input type="hidden" name="localizacao" value="Campo Grande" />
+          </div>
+        </div>
+
+        <div class="info-divider"></div>
+
+        <!-- Consórcio -->
+        <div class="info-item">
+          <span class="info-label">Consórcio</span>
+          <div class="custom-select" data-name="consorcio">
+            <button
+              type="button"
+              class="select-trigger"
+              aria-haspopup="listbox"
+            >
+              <span class="select-value">Imobiliário</span>
+              <svg
+                class="select-arrow"
+                width="10"
+                height="6"
+                viewBox="0 0 10 6"
+                fill="none"
+              >
+                <path
+                  d="M1 1l4 4 4-4"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"></path>
+              </svg>
+            </button>
+            <ul class="select-dropdown" role="listbox">
+              <li role="option" data-value="Imobiliário" class="selected">
+                Imobiliário
+              </li>
+              <li role="option" data-value="Automotivo">Automotivo</li>
+              <li role="option" data-value="Imobiliário e Automotivo">Ambos</li>
+            </ul>
+            <input type="hidden" name="consorcio" value="Imobiliário" />
+          </div>
+        </div>
+
+        <div class="info-divider"></div>
+
+        <!-- Entrada -->
+        <div class="info-item">
+          <span class="info-label">Entrada</span>
+          <input
+            type="text"
+            class="info-input"
+            id="hero-entrada"
+            name="entrada"
+            value="R$ 10.000"
+            placeholder="R$ 10.000"
+          />
+        </div>
+
+        <button type="button" class="btn-simulacao" id="hero-submit-btn">
+          Faça uma simulação
+        </button>
+      </div>
     </div>
 
-    <div class="hero-image-placeholder">
-      <img src="/house.png" alt="Casa" class="hero-img" />
+    <div class="hero-image-wrapper">
+      <img src="/images/casa.png" alt="Casa moderna" class="hero-img" />
     </div>
   </div>
 </section>
+
+<script>
+  // Custom select logic
+  document
+    .querySelectorAll(".hero-info-bar .custom-select")
+    .forEach((select) => {
+      const trigger = select.querySelector(
+        ".select-trigger",
+      ) as HTMLButtonElement;
+      const dropdown = select.querySelector(
+        ".select-dropdown",
+      ) as HTMLUListElement;
+      const valueSpan = select.querySelector(
+        ".select-value",
+      ) as HTMLSpanElement;
+      const hiddenInput = select.querySelector(
+        'input[type="hidden"]',
+      ) as HTMLInputElement;
+      const options = select.querySelectorAll('[role="option"]');
+
+      trigger?.addEventListener("click", (e) => {
+        e.stopPropagation();
+        // Close all other dropdowns first
+        document.querySelectorAll(".custom-select.open").forEach((s) => {
+          if (s !== select) s.classList.remove("open");
+        });
+        select.classList.toggle("open");
+      });
+
+      options.forEach((option) => {
+        option.addEventListener("click", () => {
+          const value = (option as HTMLElement).dataset.value || "";
+          valueSpan.textContent = option.textContent;
+          hiddenInput.value = value;
+          options.forEach((o) => o.classList.remove("selected"));
+          option.classList.add("selected");
+          select.classList.remove("open");
+        });
+      });
+    });
+
+  // Close dropdowns on outside click
+  document.addEventListener("click", () => {
+    document
+      .querySelectorAll(".custom-select.open")
+      .forEach((s) => s.classList.remove("open"));
+  });
+
+  // Currency mask for entrada
+  const entradaInput = document.getElementById(
+    "hero-entrada",
+  ) as HTMLInputElement;
+  entradaInput?.addEventListener("focus", () => {
+    if (entradaInput.value === "R$ 10.000") {
+      entradaInput.select();
+    }
+  });
+
+  entradaInput?.addEventListener("input", () => {
+    let v = entradaInput.value.replace(/\D/g, "");
+    if (v) {
+      const num = parseInt(v, 10);
+      entradaInput.value = "R$ " + num.toLocaleString("pt-BR");
+    } else {
+      entradaInput.value = "";
+    }
+  });
+
+  // Submit → open dialog with pre-filled data
+  const heroSubmitBtn = document.getElementById("hero-submit-btn");
+  heroSubmitBtn?.addEventListener("click", () => {
+    const heroBar = document.getElementById("hero-form")!;
+    const localizacao = (
+      heroBar.querySelector('[name="localizacao"]') as HTMLInputElement
+    ).value;
+    const consorcio = (
+      heroBar.querySelector('[name="consorcio"]') as HTMLInputElement
+    ).value;
+    const entrada = (
+      document.getElementById("hero-entrada") as HTMLInputElement
+    ).value;
+
+    // Fill dialog custom selects via exposed API
+    const setSelect = (window as any).__setDialogSelect;
+    const dialogLocSelect = document.querySelector(
+      '.dialog-custom-select[data-name="localizacao"]',
+    );
+    const dialogConsSelect = document.querySelector(
+      '.dialog-custom-select[data-name="consorcio"]',
+    );
+    const dialogEntrada = document.getElementById(
+      "dialog-entrada",
+    ) as HTMLInputElement;
+
+    if (setSelect && dialogLocSelect) setSelect(dialogLocSelect, localizacao);
+    if (setSelect && dialogConsSelect) setSelect(dialogConsSelect, consorcio);
+    if (dialogEntrada) dialogEntrada.value = entrada;
+
+    const dialog = document.getElementById(
+      "budget-dialog",
+    ) as HTMLDialogElement;
+    dialog?.showModal();
+  });
+</script>
 
 <style>
   .hero-section {
     position: relative;
     width: 100%;
-    max-height: 850px;
     background-color: white;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-  }
-
-  .hero-section::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 63%;
-    height: 100%;
-    background: linear-gradient(to right, white 10%, transparent 50%);
-    z-index: 3;
-    pointer-events: none;
+    overflow-x: clip;
+    min-height: 600px;
+    padding: 60px 0 80px;
   }
 
   .hero-container {
     position: relative;
     z-index: 2;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 60px 40px;
-    padding-bottom: 180px;
-    max-width: 1560px;
-    margin: 0 auto;
+    gap: 40px;
+    height: 65vh;
   }
 
   .hero-content {
-    color: #111111;
-    max-width: 500px;
+    flex: 1;
+    min-width: 0;
   }
 
   .hero-content h1 {
-    font-size: 36px;
-    line-height: 1.1;
-    margin-bottom: 24px;
-    color: #111111;
-    letter-spacing: -0.5px;
+    font-size: 72px;
+    line-height: 1.15;
+    margin-bottom: 20px;
+    color: var(--gray-dark);
+    font-weight: 900;
   }
 
-  .hero-content h1 .light {
-    font-weight: 400;
+  .hero-content h1 em {
+    font-style: normal;
+    color: var(--primary);
+    font-weight: 900;
   }
 
-  .hero-content h1 .bold {
-    font-weight: 700;
+  .hero-description {
+    font-size: 14px;
+    line-height: 1.7;
+    font-weight: 600;
+    color: var(--gray-light);
+    margin-bottom: 40px;
+    max-width: 480px;
   }
 
-  .hero-content p {
-    font-size: 18px;
-    line-height: 1.5;
-    color: #444444;
-    opacity: 1;
+  /* ===== Info Bar / Form ===== */
+  .hero-info-bar {
+    display: flex;
+    align-items: center;
+    background: white;
+    border: 1px solid #e8e8e8;
+    border-radius: 16px;
+    padding: 0 12px;
+    gap: 0;
+    max-width: 750px;
   }
 
-  .hero-image-placeholder {
+  .info-item {
+    display: flex;
+    flex-direction: column;
+    padding: 14px 12px;
+    gap: 6px;
+    flex: 1;
+    min-width: 0;
+    position: relative;
+  }
+
+  .info-label {
+    font-size: 10px;
+    color: var(--gray-light);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    cursor: default;
+  }
+
+  /* ===== Custom Select ===== */
+  .custom-select {
+    position: relative;
+  }
+
+  .select-trigger {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--gray-dark);
+    cursor: pointer;
     width: 100%;
+    text-align: left;
+    outline: none;
+  }
+
+  .select-value {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .select-arrow {
+    color: #aaa;
+    flex-shrink: 0;
+    transition: transform 0.25s ease;
+    margin-left: auto;
+  }
+
+  .custom-select.open .select-arrow {
+    transform: rotate(180deg);
+  }
+
+  .select-dropdown {
+    position: absolute;
+    top: calc(100% + 12px);
+    left: -12px;
+    min-width: calc(100% + 36px);
+    background: white;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    padding: 8px 6px;
+    margin: 0;
+    list-style: none;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+    z-index: 100;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .custom-select.open .select-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .select-dropdown li {
+    padding: 10px 14px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--gray-dark);
+    cursor: pointer;
+    white-space: nowrap;
+    border-radius: 8px;
+    margin-bottom: 2px;
+    transition: all 0.2s ease;
+  }
+
+  .select-dropdown li:last-child {
+    margin-bottom: 0;
+  }
+
+  .select-dropdown li:hover {
+    background: #f0f4ff;
+    color: var(--primary);
+  }
+
+  .select-dropdown li.selected {
+    color: var(--primary);
+    font-weight: 600;
+    background: rgba(34, 97, 255, 0.06);
+  }
+
+  /* ===== Text Input ===== */
+  .info-input {
+    font-size: 14px;
+    color: var(--gray-dark);
+    font-weight: 600;
+    border: none;
+    background: transparent;
+    padding: 0;
+    margin: 0;
+    font-family: "Montserrat", sans-serif;
+    outline: none;
+    width: 100%;
+    caret-color: #000;
+  }
+
+  .info-input::placeholder {
+    color: #ccc;
+    font-weight: 500;
+  }
+
+  .info-input:focus {
+    color: var(--primary);
+  }
+
+  /* ===== Divider ===== */
+  .info-divider {
+    width: 1px;
+    height: 40px;
+    background: #e8e8e8;
+    flex-shrink: 0;
+  }
+
+  /* ===== CTA Button ===== */
+  .btn-simulacao {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--primary);
+    color: white;
+    padding: 14px 24px;
+    border-radius: 16px;
+    font-weight: 600;
+    font-size: 13px;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+    margin-left: auto;
+    margin-right: 4px;
+    border: none;
+    cursor: pointer;
+    font-family: "Montserrat", sans-serif;
+  }
+
+  .btn-simulacao:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(34, 97, 255, 0.3);
+  }
+
+  /* ===== Hero Image ===== */
+  .hero-image-wrapper {
+    flex: 1;
     display: flex;
     justify-content: flex-end;
+    align-items: center;
   }
 
   .hero-img {
-    width: 130%;
-    max-width: 1600px;
+    width: 200%;
+    max-width: 1560px;
     height: auto;
     object-fit: contain;
-    margin-right: -340px;
-    margin-bottom: -180px;
-    display: block;
+    border-radius: 16px;
+    margin-right: -600px;
+    margin-top: 50px;
   }
 
+  /* ===== Mobile ===== */
   @media (max-width: 992px) {
-    .hero-section::after {
-      display: none;
+    .hero-section {
+      padding: 40px 0 60px;
+      min-height: auto;
     }
 
     .hero-container {
       flex-direction: column;
       gap: 40px;
-      text-align: center;
-      padding-bottom: 60px;
     }
 
-    .hero-content h1,
-    .hero-content p {
-      margin-left: 0;
+    .hero-content h1 {
+      font-size: 36px;
     }
 
-    #open-budget-dialog-hero {
-      margin-left: 0 !important;
+    .hero-info-bar {
+      flex-direction: column;
+      align-items: stretch;
+      max-width: 100%;
+      padding: 0;
     }
 
-    .hero-image-placeholder {
+    .info-item {
+      padding: 14px 20px;
+    }
+
+    .info-divider {
       width: 100%;
+      height: 1px;
+    }
+
+    .select-dropdown {
+      left: 0;
+      min-width: 100%;
+    }
+
+    .btn-simulacao {
+      margin: 0;
+      border-radius: 0 0 16px 16px;
+      padding: 16px 24px;
+    }
+
+    .hero-image-wrapper {
       justify-content: center;
+      width: 100%;
     }
 
     .hero-img {
-      width: 100%;
-      margin: 0;
+      max-width: 100%;
     }
   }
 </style>
