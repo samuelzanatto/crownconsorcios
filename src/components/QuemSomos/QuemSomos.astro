@@ -122,19 +122,53 @@
   @media (max-width: 992px) {
     .quem-somos-section {
       padding: 60px 0;
+      height: auto;
     }
 
     .qs-container {
       flex-direction: column;
-      gap: 40px;
+      gap: 32px;
+    }
+
+    .qs-pretitle {
+      font-size: 36px;
     }
 
     .qs-crown {
-      font-size: 40px;
+      font-size: 32px;
+    }
+
+    .qs-line {
+      width: 100px;
+      height: 4px;
+    }
+
+    .qs-text {
+      font-size: 14px;
+      max-width: 100%;
     }
 
     .qs-img {
       max-width: 100%;
+      border-radius: 12px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .quem-somos-section {
+      padding: 48px 0;
+    }
+
+    .qs-pretitle {
+      font-size: 28px;
+    }
+
+    .qs-crown {
+      font-size: 26px;
+    }
+
+    .qs-header {
+      margin-bottom: 20px;
     }
   }
 </style>

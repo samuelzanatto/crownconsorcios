@@ -3,41 +3,34 @@
 ---
 
 <section id="seguros" class="seguros-section">
-  <div class="seguros-container container">
+  <div class="container seguros-container">
     <div class="section-header">
-      <h2>
-        <span class="text-dark">Não é só consórcio.</span>
-        <span class="text-dark">É </span><span class="text-blue"
-          >inteligência<br />financeira</span
-        >
-        <span class="text-dark"> aplicada ao seu </span><em class="text-blue"
-          >futuro</em
-        >
-      </h2>
+      <h2 class="section-title">Não é só consórcio.</h2>
+      <div class="title-highlight">
+        É <span class="highlight">inteligência financeira</span>
+      </div>
+      <p class="section-subtitle">aplicada ao seu <span class="highlight">futuro</span></p>
     </div>
 
     <div class="cards-grid">
       <div class="card">
-        <h3 class="card-title">Economia</h3>
+        <h3 class="card-title">Economia.</h3>
         <p class="card-text">
-          No consórcio, você não paga juros como no financiamento, o que reduz
-          significativamente o custo total.
+          No consórcio, você não paga juros como no financiamento, e sim a taxa de administração total.
         </p>
       </div>
 
       <div class="card">
-        <h3 class="card-title">Planejamento</h3>
+        <h3 class="card-title">Planejamento.</h3>
         <p class="card-text">
-          Mesmo sendo um plano de médio a longo prazo, o consórcio oferece a
-          possibilidade de antecipação através de lances ou sorteio.
+          Mesmo sendo um plano de médio a longo prazo, o consórcio oferece previsibilidade e controle sobre suas finanças.
         </p>
       </div>
 
       <div class="card">
-        <h3 class="card-title">Conquista</h3>
+        <h3 class="card-title">Conquista.</h3>
         <p class="card-text">
-          Mesmo sendo um plano de médio a longo prazo, o consórcio oferece a
-          possibilidade de antecipação através de lances ou sorteio.
+          Mesmo sendo um plano de médio a longo prazo, o consórcio oferece previsibilidade através de lances ou sorteio.
         </p>
       </div>
     </div>
@@ -46,38 +39,47 @@
 
 <style>
   .seguros-section {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 80px 0;
-    background: white;
-    height: 100vh;
+    padding: 100px 0;
+    background: linear-gradient(135deg, #f8f9ff 0%, #ffffff 100%);
+  }
+
+  .seguros-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
   }
 
   .section-header {
     text-align: center;
-    margin-bottom: 60px;
+    margin-bottom: 80px;
   }
 
-  .section-header h2 {
-    font-size: 36px;
+  .section-title {
+    font-size: 48px;
     font-weight: 700;
-    line-height: 1.3;
     color: var(--gray-dark);
+    margin-bottom: 10px;
+    line-height: 1.2;
   }
 
-  .text-dark {
+  .title-highlight {
+    font-size: 48px;
+    font-weight: 700;
     color: var(--gray-dark);
-    font-weight: 900;
+    margin-bottom: 10px;
   }
 
-  .text-blue {
+  .title-highlight .highlight {
     color: var(--primary);
-    font-weight: 900;
   }
 
-  .section-header h2 em {
-    font-style: normal;
+  .section-subtitle {
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--gray-dark);
+  }
+
+  .section-subtitle .highlight {
     color: var(--primary);
   }
 
@@ -85,47 +87,79 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
+    margin-top: 60px;
   }
 
   .card {
     background: white;
-    padding: 30px 24px;
+    padding: 30px;
     border-radius: 12px;
-    border: 1px solid #e8e8e8;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     transition: all 0.3s ease;
+    border-top: 4px solid var(--primary);
   }
 
   .card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(34, 97, 255, 0.1);
-    border-color: var(--primary);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(34, 97, 255, 0.15);
   }
 
   .card-title {
-    font-size: 22px;
-    font-weight: 900;
+    font-size: 24px;
+    font-weight: 700;
     color: var(--primary);
-    margin-bottom: 14px;
+    margin-bottom: 16px;
   }
 
   .card-text {
-    font-size: 14px;
-    line-height: 1.7;
+    font-size: 16px;
+    line-height: 1.6;
     color: var(--gray-light);
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 992px) {
     .seguros-section {
       padding: 60px 0;
+    }
+
+    .seguros-container {
+      padding: 0 20px;
+    }
+
+    .section-header {
+      margin-bottom: 40px;
     }
 
     .cards-grid {
       grid-template-columns: 1fr;
       gap: 20px;
+      margin-top: 30px;
     }
 
-    .section-header h2 {
+    .section-title,
+    .title-highlight,
+    .section-subtitle {
       font-size: 28px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .section-title,
+    .title-highlight,
+    .section-subtitle {
+      font-size: 24px;
+    }
+
+    .card {
+      padding: 24px;
+    }
+
+    .card-title {
+      font-size: 20px;
+    }
+
+    .card-text {
+      font-size: 14px;
     }
   }
 </style>

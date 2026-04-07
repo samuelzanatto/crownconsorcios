@@ -469,17 +469,24 @@
   /* ===== Mobile ===== */
   @media (max-width: 992px) {
     .hero-section {
-      padding: 40px 0 60px;
+      padding: 30px 0 0;
       min-height: auto;
+      overflow: hidden;
     }
 
     .hero-container {
       flex-direction: column;
-      gap: 40px;
+      gap: 24px;
+      height: auto;
     }
 
     .hero-content h1 {
       font-size: 36px;
+    }
+
+    .hero-description {
+      font-size: 13px;
+      margin-bottom: 24px;
     }
 
     .hero-info-bar {
@@ -512,10 +519,16 @@
     .hero-image-wrapper {
       justify-content: center;
       width: 100%;
+      overflow: hidden;
     }
 
     .hero-img {
+      width: 100%;
       max-width: 100%;
+      margin: 0;
+      margin-right: 0;
+      margin-top: 0;
+      border-radius: 0;
     }
   }
 </style>

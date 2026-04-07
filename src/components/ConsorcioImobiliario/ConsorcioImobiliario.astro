@@ -126,9 +126,10 @@
     color: var(--gray-light);
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 992px) {
     .consorcios-section {
       padding: 60px 0;
+      height: auto;
     }
 
     .consorcios-grid {
@@ -141,7 +142,33 @@
     }
 
     .card-image-wrapper {
+      height: 240px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .consorcios-section {
+      padding: 48px 0;
+    }
+
+    .section-header {
+      margin-bottom: 32px;
+    }
+
+    .section-header h2 {
+      font-size: 20px;
+    }
+
+    .card-image-wrapper {
       height: 200px;
+    }
+
+    .card-body {
+      padding: 16px 8px;
+    }
+
+    .card-text {
+      font-size: 13px;
     }
   }
 </style>
