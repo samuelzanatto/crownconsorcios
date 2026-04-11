@@ -110,17 +110,66 @@
 
       <div class="form-row">
         <div class="form-group">
-          <label for="dialog-entrada">Valor de Entrada</label>
-          <input
-            type="text"
-            id="dialog-entrada"
-            name="entrada"
-            placeholder="R$ 10.000"
-            required
-          />
+          <label>Qual seu objetivo?</label>
+          <div class="dialog-custom-select" data-name="objetivo">
+            <button type="button" class="dcs-trigger" aria-haspopup="listbox">
+              <span class="dcs-value dcs-placeholder">Selecione</span>
+              <svg
+                class="dcs-arrow"
+                width="10"
+                height="6"
+                viewBox="0 0 10 6"
+                fill="none"
+              >
+                <path
+                  d="M1 1l4 4 4-4"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"></path>
+              </svg>
+            </button>
+            <ul class="dcs-dropdown" role="listbox">
+              <li role="option" data-value="Comprar um imóvel">Comprar um imóvel</li>
+              <li role="option" data-value="Carro">Carro</li>
+              <li role="option" data-value="Capital de giro">Capital de giro</li>
+              <li role="option" data-value="Reforma">Reforma</li>
+              <li role="option" data-value="Investimento">Investimento</li>
+              <li role="option" data-value="Outro">Outro</li>
+            </ul>
+            <input type="hidden" name="objetivo" value="" />
+          </div>
         </div>
         <div class="form-group">
-          <label>Valor do Consórcio</label>
+          <label>Já fez consórcio?</label>
+          <div class="dialog-custom-select" data-name="ja_fez_consorcio">
+            <button type="button" class="dcs-trigger" aria-haspopup="listbox">
+              <span class="dcs-value dcs-placeholder">Selecione</span>
+              <svg
+                class="dcs-arrow"
+                width="10"
+                height="6"
+                viewBox="0 0 10 6"
+                fill="none"
+              >
+                <path
+                  d="M1 1l4 4 4-4"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"></path>
+              </svg>
+            </button>
+            <ul class="dcs-dropdown" role="listbox">
+              <li role="option" data-value="Sim">Sim</li>
+              <li role="option" data-value="Não">Não</li>
+            </ul>
+            <input type="hidden" name="ja_fez_consorcio" value="" />
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Valor da carta que precisa</label>
           <div class="dialog-custom-select" data-name="valor">
             <button type="button" class="dcs-trigger" aria-haspopup="listbox">
               <span class="dcs-value dcs-placeholder">Selecione</span>
@@ -149,13 +198,80 @@
               <li role="option" data-value="R$ 250.000 a R$ 500.000">
                 R$ 250k – R$ 500k
               </li>
-              <li role="option" data-value="Acima de R$ 500.000">
-                Acima de R$ 500k
+              <li role="option" data-value="R$ 500.000 a R$ 1.000.000">
+                R$ 500k – R$ 1M
+              </li>
+              <li role="option" data-value="Acima de R$ 1.000.000">
+                Acima de R$ 1M
               </li>
             </ul>
             <input type="hidden" name="valor" value="" />
           </div>
         </div>
+        <div class="form-group">
+          <label>Em qual prazo?</label>
+          <div class="dialog-custom-select" data-name="prazo">
+            <button type="button" class="dcs-trigger" aria-haspopup="listbox">
+              <span class="dcs-value dcs-placeholder">Selecione</span>
+              <svg
+                class="dcs-arrow"
+                width="10"
+                height="6"
+                viewBox="0 0 10 6"
+                fill="none"
+              >
+                <path
+                  d="M1 1l4 4 4-4"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"></path>
+              </svg>
+            </button>
+            <ul class="dcs-dropdown" role="listbox">
+              <li role="option" data-value="Até 2 meses">Até 2 meses</li>
+              <li role="option" data-value="3 a 6 meses">3 a 6 meses</li>
+              <li role="option" data-value="6 a 12 meses">6 a 12 meses</li>
+              <li role="option" data-value="1 a 2 anos">1 a 2 anos</li>
+              <li role="option" data-value="Mais de 2 anos">Mais de 2 anos</li>
+            </ul>
+            <input type="hidden" name="prazo" value="" />
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="dialog-entrada">Valor de Entrada</label>
+          <input
+            type="text"
+            id="dialog-entrada"
+            name="entrada"
+            placeholder="R$ 25.000"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="dialog-parcela">Valor disponível p/ parcela</label>
+          <input
+            type="text"
+            id="dialog-parcela"
+            name="parcela"
+            placeholder="R$ 1.000/Mês"
+            required
+          />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="dialog-profissao">Profissão</label>
+        <input
+          type="text"
+          id="dialog-profissao"
+          name="profissao"
+          placeholder="Ex: Empresário, Médico..."
+          required
+          maxlength="100"
+        />
       </div>
 
       <div class="form-divider"></div>
@@ -197,12 +313,12 @@
       </div>
 
       <div class="form-group">
-        <label for="dialog-message">Mensagem (opcional)</label>
+        <label for="dialog-message">Observações (opcional)</label>
         <textarea
           id="dialog-message"
           name="mensagem"
-          placeholder="Descreva o que você busca..."
-          rows="3"
+          placeholder="Alguma informação adicional..."
+          rows="2"
           maxlength="500"></textarea>
       </div>
 
@@ -445,17 +561,22 @@
     const lines = [
       `Olá! Vim pelo site da Crown Consórcios.`,
       ``,
-      `📋 *Dados da Simulação:*`,
+      `📋 *Dados do Lead:*`,
       `👤 Nome: ${data.nome || "—"}`,
-      `📧 Email: ${data.email || "—"}`,
       `📱 Telefone: ${data.telefone || "—"}`,
+      `📧 Email: ${data.email || "—"}`,
       `📍 Localização: ${data.localizacao || "—"}`,
-      `🏠 Consórcio: ${data.consorcio || "—"}`,
+      `🎯 Objetivo: ${data.objetivo || "—"}`,
+      `🏠 Tipo de Consórcio: ${data.consorcio || "—"}`,
+      `🔄 Já fez consórcio: ${data.ja_fez_consorcio || "—"}`,
+      `💎 Valor da carta: ${data.valor || "—"}`,
+      `⏰ Prazo: ${data.prazo || "—"}`,
       `💰 Entrada: ${data.entrada || "—"}`,
-      `💎 Valor: ${data.valor || "—"}`,
+      `💳 Parcela mensal: ${data.parcela || "—"}`,
+      `💼 Profissão: ${data.profissao || "—"}`,
     ];
     if (data.mensagem) {
-      lines.push(`💬 Mensagem: ${data.mensagem}`);
+      lines.push(`💬 Observações: ${data.mensagem}`);
     }
     lines.push(``, `Aguardo retorno!`);
     return lines.join("\n");

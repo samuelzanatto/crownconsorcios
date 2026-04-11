@@ -11,7 +11,6 @@
     <nav class="desktop-nav" id="main-nav">
       <ul>
         <li><a href="#" class="nav-link active">Início</a></li>
-        <li><a href="#seguros" class="nav-link">Seguros</a></li>
         <li><a href="#quem-somos" class="nav-link">Quem somos</a></li>
         <li><a href="#consorcios" class="nav-link">Consórcios</a></li>
         <li><a href="#redes" class="nav-link">Contato</a></li>
@@ -32,7 +31,6 @@
   <div class="mobile-nav container" id="mobile-nav">
     <ul>
       <li><a href="#" class="nav-link active">Início</a></li>
-      <li><a href="#seguros" class="nav-link">Seguros</a></li>
       <li><a href="#quem-somos" class="nav-link">Quem somos</a></li>
       <li><a href="#consorcios" class="nav-link">Consórcios</a></li>
       <li><a href="#redes" class="nav-link">Contato</a></li>
@@ -89,7 +87,9 @@
     font-weight: 600;
     color: var(--gray-dark);
     text-decoration: none;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease;
     padding: 8px 18px;
     border-radius: 50px;
     background-color: transparent;
@@ -242,25 +242,26 @@
 
   // Scroll Spy para mudar de forma suave e automática o link ativo conforme a rolagem
   function initScrollSpy() {
-    const headerLinks = document.querySelectorAll('.nav-link');
-    
+    const headerLinks = document.querySelectorAll(".nav-link");
+
     // Mapeia os links para seus IDs de destino
-    const linksMap = Array.from(headerLinks).map(link => {
-      const href = link.getAttribute('href') || '#';
+    const linksMap = Array.from(headerLinks).map((link) => {
+      const href = link.getAttribute("href") || "#";
       // Trata inicio "#" como null e outras seções removem o "#"
-      const targetId = (href.startsWith('#') && href.length > 1) ? href.substring(1) : null;
+      const targetId =
+        href.startsWith("#") && href.length > 1 ? href.substring(1) : null;
       return { link, targetId, href };
     });
 
-    window.addEventListener('scroll', () => {
+    window.addEventListener("scroll", () => {
       const scrollPos = window.scrollY;
-      
+
       // Se tiver bem no topo da página
       if (scrollPos < 150) {
-        linksMap.forEach(item => {
-          item.link.classList.remove('active');
-          if (item.href === '#') {
-            item.link.classList.add('active');
+        linksMap.forEach((item) => {
+          item.link.classList.remove("active");
+          if (item.href === "#") {
+            item.link.classList.add("active");
           }
         });
         return;
@@ -268,8 +269,8 @@
 
       // Encontrar todas as seções que existem na tela e possuam ID relacionado a um link
       const sections = linksMap
-        .filter(item => item.targetId)
-        .map(item => document.getElementById(item.targetId || ''))
+        .filter((item) => item.targetId)
+        .map((item) => document.getElementById(item.targetId || ""))
         .filter(Boolean); // filtra nulos
 
       let currentSectionId = null;
@@ -279,16 +280,16 @@
         if (!section) continue;
         const offset = section.offsetTop - 200; // margem para ativação antes de chegar nela
         if (scrollPos >= offset) {
-          currentSectionId = section.getAttribute('id');
+          currentSectionId = section.getAttribute("id");
         }
       }
 
       // Atualiza os links
       if (currentSectionId) {
-        linksMap.forEach(item => {
-          item.link.classList.remove('active');
+        linksMap.forEach((item) => {
+          item.link.classList.remove("active");
           if (item.targetId === currentSectionId) {
-            item.link.classList.add('active');
+            item.link.classList.add("active");
           }
         });
       }
@@ -296,5 +297,5 @@
   }
 
   // Aciona logo no carregamento caso não abra a página no topo
-  document.addEventListener('DOMContentLoaded', initScrollSpy);
+  document.addEventListener("DOMContentLoaded", initScrollSpy);
 </script>
