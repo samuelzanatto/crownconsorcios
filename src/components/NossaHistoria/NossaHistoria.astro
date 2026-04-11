@@ -1,0 +1,161 @@
+---
+// src/components/NossaHistoria/NossaHistoria.astro
+---
+
+<section class="historia-section">
+  <div class="historia-container container">
+    <div class="historia-image">
+      <img
+        src="/images/paulo2.jpeg"
+        alt="Paulo Afonso Júnior — Fundador da Crown Consórcios"
+        class="historia-img"
+      />
+    </div>
+
+    <div class="historia-content">
+      <h2>
+        <span class="historia-title">Como a Crown</span><br />
+        <div class="qs-crown-container">
+          <span class="historia-subtitle">NASCEU</span>
+          <div class="qs-line"></div>
+        </div>
+      </h2>
+
+      <p class="historia-text">
+        Após anos atuando dentro de bancos, Paulo percebeu que muitos clientes
+        estavam presos a financiamentos caros e falta de estratégia. Assim
+        nasceu a Crown Consórcios — uma consultoria estratégica que transforma a
+        forma como pessoas e empresas constroem patrimônio no Brasil.
+      </p>
+
+      <p class="historia-text">
+        A Crown traduz a experiência do mercado financeiro tradicional em
+        soluções acessíveis, éticas e inteligentes — colocando o cliente sempre
+        no centro da estratégia.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .historia-section {
+    padding: 80px 0;
+    background: var(--primary);
+    height: 800px;
+  }
+
+  .historia-container {
+    display: flex;
+    align-items: center;
+  }
+
+  /* Imagem à ESQUERDA (invertido do QuemSomos) */
+  .historia-image {
+    flex: 1;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+  }
+
+  .historia-img {
+    width: 100%;
+    max-width: 420px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 16px;
+  }
+
+  /* Texto à DIREITA */
+  .historia-content {
+    flex: 1;
+  }
+
+  .historia-content h2 {
+    font-size: 36px;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 24px;
+  }
+
+  .qs-crown-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .historia-title {
+    color: white;
+    font-size: 64px;
+  }
+
+  .historia-subtitle {
+    color: white;
+    font-size: 56px;
+  }
+
+  .qs-line {
+    width: 200px;
+    height: 6px;
+    background: white;
+  }
+
+  .historia-text {
+    font-size: 20px;
+    line-height: 1.8;
+    color: white;
+    margin-bottom: 16px;
+    max-width: 650px;
+  }
+
+  .historia-text:last-child {
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 992px) {
+    .historia-section {
+      padding: 60px 0;
+      height: auto;
+    }
+
+    .historia-container {
+      flex-direction: column-reverse;
+      gap: 32px;
+    }
+
+    .historia-content h2 {
+      font-size: 28px;
+    }
+
+    .historia-title {
+      font-size: 36px;
+    }
+
+    .historia-subtitle {
+      font-size: 28px;
+    }
+
+    .historia-text {
+      font-size: 14px;
+      max-width: 100%;
+    }
+
+    .historia-img {
+      max-width: 100%;
+      border-radius: 12px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .historia-section {
+      padding: 48px 0;
+    }
+
+    .historia-title {
+      font-size: 28px;
+    }
+
+    .historia-subtitle {
+      font-size: 22px;
+    }
+  }
+</style>
