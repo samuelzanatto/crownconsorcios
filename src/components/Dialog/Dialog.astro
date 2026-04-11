@@ -8,10 +8,24 @@
     <div class="dialog-header">
       <div>
         <h3>Solicitar Orçamento</h3>
-        <p class="dialog-subtitle">Preencha seus dados e entraremos em contato</p>
+        <p class="dialog-subtitle">
+          Preencha seus dados e entraremos em contato
+        </p>
       </div>
       <button class="close-btn" id="close-budget-dialog" aria-label="Fechar">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          ><line x1="18" y1="6" x2="6" y2="18"></line><line
+            x1="6"
+            y1="6"
+            x2="18"
+            y2="18"></line></svg
+        >
       </button>
     </div>
 
@@ -22,36 +36,74 @@
           <label>Localização</label>
           <div class="dialog-custom-select" data-name="localizacao">
             <button type="button" class="dcs-trigger" aria-haspopup="listbox">
-              <span class="dcs-value" id="dialog-localizacao-value">Campo Grande</span>
-              <svg class="dcs-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none">
-                <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <span class="dcs-value" id="dialog-localizacao-value"
+                >Campo Grande</span
+              >
+              <svg
+                class="dcs-arrow"
+                width="10"
+                height="6"
+                viewBox="0 0 10 6"
+                fill="none"
+              >
+                <path
+                  d="M1 1l4 4 4-4"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"></path>
               </svg>
             </button>
             <ul class="dcs-dropdown" role="listbox">
-              <li role="option" data-value="Campo Grande" class="selected">Campo Grande</li>
+              <li role="option" data-value="Campo Grande" class="selected">
+                Campo Grande
+              </li>
               <li role="option" data-value="Dourados">Dourados</li>
               <li role="option" data-value="Três Lagoas">Três Lagoas</li>
               <li role="option" data-value="Corumbá">Corumbá</li>
               <li role="option" data-value="Outra cidade">Outra cidade</li>
             </ul>
-            <input type="hidden" name="localizacao" id="dialog-localizacao" value="Campo Grande" />
+            <input
+              type="hidden"
+              name="localizacao"
+              id="dialog-localizacao"
+              value="Campo Grande"
+            />
           </div>
         </div>
         <div class="form-group">
           <label>Tipo de Consórcio</label>
           <div class="dialog-custom-select" data-name="consorcio">
             <button type="button" class="dcs-trigger" aria-haspopup="listbox">
-              <span class="dcs-value" id="dialog-consorcio-value">Imobiliário</span>
-              <svg class="dcs-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none">
-                <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <span class="dcs-value" id="dialog-consorcio-value"
+                >Imobiliário</span
+              >
+              <svg
+                class="dcs-arrow"
+                width="10"
+                height="6"
+                viewBox="0 0 10 6"
+                fill="none"
+              >
+                <path
+                  d="M1 1l4 4 4-4"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"></path>
               </svg>
             </button>
             <ul class="dcs-dropdown" role="listbox">
-              <li role="option" data-value="Imobiliário" class="selected">Imobiliário</li>
+              <li role="option" data-value="Imobiliário" class="selected">
+                Imobiliário
+              </li>
               <li role="option" data-value="Automotivo">Automotivo</li>
               <li role="option" data-value="Imobiliário e Automotivo">Ambos</li>
             </ul>
-            <input type="hidden" name="consorcio" id="dialog-consorcio" value="Imobiliário" />
+            <input
+              type="hidden"
+              name="consorcio"
+              id="dialog-consorcio"
+              value="Imobiliário"
+            />
           </div>
         </div>
       </div>
@@ -59,23 +111,47 @@
       <div class="form-row">
         <div class="form-group">
           <label for="dialog-entrada">Valor de Entrada</label>
-          <input type="text" id="dialog-entrada" name="entrada" placeholder="R$ 10.000" required />
+          <input
+            type="text"
+            id="dialog-entrada"
+            name="entrada"
+            placeholder="R$ 10.000"
+            required
+          />
         </div>
         <div class="form-group">
           <label>Valor do Consórcio</label>
           <div class="dialog-custom-select" data-name="valor">
             <button type="button" class="dcs-trigger" aria-haspopup="listbox">
               <span class="dcs-value dcs-placeholder">Selecione</span>
-              <svg class="dcs-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none">
-                <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <svg
+                class="dcs-arrow"
+                width="10"
+                height="6"
+                viewBox="0 0 10 6"
+                fill="none"
+              >
+                <path
+                  d="M1 1l4 4 4-4"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"></path>
               </svg>
             </button>
             <ul class="dcs-dropdown" role="listbox">
               <li role="option" data-value="Até R$ 50.000">Até R$ 50.000</li>
-              <li role="option" data-value="R$ 50.000 a R$ 100.000">R$ 50k – R$ 100k</li>
-              <li role="option" data-value="R$ 100.000 a R$ 250.000">R$ 100k – R$ 250k</li>
-              <li role="option" data-value="R$ 250.000 a R$ 500.000">R$ 250k – R$ 500k</li>
-              <li role="option" data-value="Acima de R$ 500.000">Acima de R$ 500k</li>
+              <li role="option" data-value="R$ 50.000 a R$ 100.000">
+                R$ 50k – R$ 100k
+              </li>
+              <li role="option" data-value="R$ 100.000 a R$ 250.000">
+                R$ 100k – R$ 250k
+              </li>
+              <li role="option" data-value="R$ 250.000 a R$ 500.000">
+                R$ 250k – R$ 500k
+              </li>
+              <li role="option" data-value="Acima de R$ 500.000">
+                Acima de R$ 500k
+              </li>
             </ul>
             <input type="hidden" name="valor" value="" />
           </div>
@@ -86,30 +162,80 @@
 
       <div class="form-group">
         <label for="dialog-name">Nome completo</label>
-        <input type="text" id="dialog-name" name="nome" placeholder="Digite seu nome" required />
+        <input
+          type="text"
+          id="dialog-name"
+          name="nome"
+          placeholder="Digite seu nome"
+          required
+          maxlength="100"
+        />
       </div>
 
       <div class="form-row">
         <div class="form-group">
           <label for="dialog-email">E-mail</label>
-          <input type="email" id="dialog-email" name="email" placeholder="seu@email.com" required />
+          <input
+            type="email"
+            id="dialog-email"
+            name="email"
+            placeholder="seu@email.com"
+            required
+            maxlength="100"
+          />
         </div>
         <div class="form-group">
           <label for="dialog-phone">Telefone / WhatsApp</label>
-          <input type="tel" id="dialog-phone" name="telefone" placeholder="(67) 99999-9999" required />
+          <input
+            type="tel"
+            id="dialog-phone"
+            name="telefone"
+            placeholder="(67) 99999-9999"
+            required
+          />
         </div>
       </div>
 
       <div class="form-group">
         <label for="dialog-message">Mensagem (opcional)</label>
-        <textarea id="dialog-message" name="mensagem" placeholder="Descreva o que você busca..." rows="3"></textarea>
+        <textarea
+          id="dialog-message"
+          name="mensagem"
+          placeholder="Descreva o que você busca..."
+          rows="3"
+          maxlength="500"></textarea>
+      </div>
+
+      <!-- Honeypot anti-bot (campo invisível) -->
+      <div
+        class="form-group"
+        style="position:absolute;left:-9999px;top:-9999px;opacity:0;pointer-events:none;"
+        aria-hidden="true"
+      >
+        <label for="dialog-website">Website</label>
+        <input
+          type="text"
+          id="dialog-website"
+          name="website"
+          tabindex="-1"
+          autocomplete="off"
+        />
       </div>
 
       <button type="submit" class="btn-primary submit-btn" id="submit-btn">
         <span id="submit-text">Enviar Solicitação</span>
         <span id="submit-loading" class="loading-spinner" style="display:none;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"
+            ></path>
           </svg>
         </span>
       </button>
@@ -120,89 +246,113 @@
   <div id="dialog-success-view" style="display:none;">
     <div class="success-content">
       <div class="success-icon">
-        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-          <polyline points="22 4 12 14.01 9 11.01"/>
+        <svg
+          width="64"
+          height="64"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="var(--primary)"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+          <polyline points="22 4 12 14.01 9 11.01"></polyline>
         </svg>
       </div>
       <h3 class="success-title">Solicitação enviada!</h3>
       <p class="success-text">
-        Recebemos seus dados com sucesso.<br/>
-        Nossa equipe entrará em contato em breve para ajudá-lo a conquistar seu objetivo.
+        Recebemos seus dados com sucesso.<br />
+        Você será redirecionado para o WhatsApp para iniciar seu atendimento personalizado.
       </p>
-      <button class="btn-primary success-close-btn" id="success-close-btn">Fechar</button>
+      <button class="btn-primary success-close-btn" id="success-close-btn"
+        >Fechar</button
+      >
     </div>
   </div>
 </dialog>
 
 <script>
   // ============================================
-  // CONFIGURAÇÃO: Cole aqui a URL do seu Google Apps Script
+  // ⚙️ CONFIGURAÇÃO DO FORMULÁRIO
   // ============================================
-  const GOOGLE_SCRIPT_URL = '';
+  // 1. URL do Google Apps Script
+  // 2. Número do WhatsApp do consultor
+  // 3. Token de segurança (MESMO do google-apps-script.js)
+  // ============================================
+  const GOOGLE_SCRIPT_URL =
+    "https://script.google.com/macros/s/AKfycbzia9Tw22QKTwstzR1PvnhkqqbKhJbFEZ9izVv_y4QDOoEZO7B106oiB3GE3p6ZrAH4/exec";
+  const WHATSAPP_NUMERO = "5567996295993";
+  const FORM_TOKEN = "8ee331ec-81b8-4762-b665-e7bab89ce172";
+  // ============================================
 
-  const dialog = document.getElementById('budget-dialog') as HTMLDialogElement;
-  const form = document.getElementById('budget-form') as HTMLFormElement;
-  const formView = document.getElementById('dialog-form-view')!;
-  const successView = document.getElementById('dialog-success-view')!;
-  const closeBtn = document.getElementById('close-budget-dialog');
-  const successCloseBtn = document.getElementById('success-close-btn');
-  const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
-  const submitText = document.getElementById('submit-text')!;
-  const submitLoading = document.getElementById('submit-loading')!;
+  const dialog = document.getElementById("budget-dialog") as HTMLDialogElement;
+  const form = document.getElementById("budget-form") as HTMLFormElement;
+  const formView = document.getElementById("dialog-form-view")!;
+  const successView = document.getElementById("dialog-success-view")!;
+  const closeBtn = document.getElementById("close-budget-dialog");
+  const successCloseBtn = document.getElementById("success-close-btn");
+  const submitBtn = document.getElementById("submit-btn") as HTMLButtonElement;
+  const submitText = document.getElementById("submit-text")!;
+  const submitLoading = document.getElementById("submit-loading")!;
 
   // ===== Custom Select Logic =====
-  document.querySelectorAll('.dialog-custom-select').forEach(select => {
-    const trigger = select.querySelector('.dcs-trigger') as HTMLButtonElement;
-    const valueSpan = select.querySelector('.dcs-value') as HTMLSpanElement;
-    const hiddenInput = select.querySelector('input[type="hidden"]') as HTMLInputElement;
+  document.querySelectorAll(".dialog-custom-select").forEach((select) => {
+    const trigger = select.querySelector(".dcs-trigger") as HTMLButtonElement;
+    const valueSpan = select.querySelector(".dcs-value") as HTMLSpanElement;
+    const hiddenInput = select.querySelector(
+      'input[type="hidden"]',
+    ) as HTMLInputElement;
     const options = select.querySelectorAll('[role="option"]');
 
-    trigger?.addEventListener('click', (e) => {
+    trigger?.addEventListener("click", (e) => {
       e.stopPropagation();
-      // Close all other dropdowns
-      document.querySelectorAll('.dialog-custom-select.open').forEach(s => {
-        if (s !== select) s.classList.remove('open');
+      document.querySelectorAll(".dialog-custom-select.open").forEach((s) => {
+        if (s !== select) s.classList.remove("open");
       });
-      select.classList.toggle('open');
+      select.classList.toggle("open");
     });
 
-    options.forEach(option => {
-      option.addEventListener('click', () => {
-        const value = (option as HTMLElement).dataset.value || '';
+    options.forEach((option) => {
+      option.addEventListener("click", () => {
+        const value = (option as HTMLElement).dataset.value || "";
         valueSpan.textContent = option.textContent;
-        valueSpan.classList.remove('dcs-placeholder');
+        valueSpan.classList.remove("dcs-placeholder");
         hiddenInput.value = value;
-        options.forEach(o => o.classList.remove('selected'));
-        option.classList.add('selected');
-        select.classList.remove('open');
+        options.forEach((o) => o.classList.remove("selected"));
+        option.classList.add("selected");
+        select.classList.remove("open");
       });
     });
   });
 
   // Close dropdowns on click outside
-  document.addEventListener('click', (e) => {
+  document.addEventListener("click", (e) => {
     const target = e.target as HTMLElement;
-    if (!target.closest('.dialog-custom-select')) {
-      document.querySelectorAll('.dialog-custom-select.open').forEach(s => s.classList.remove('open'));
+    if (!target.closest(".dialog-custom-select")) {
+      document
+        .querySelectorAll(".dialog-custom-select.open")
+        .forEach((s) => s.classList.remove("open"));
     }
   });
 
   // ===== Helper: set custom select value programmatically =====
   function setDialogSelectValue(selectEl: Element, value: string) {
-    const hiddenInput = selectEl.querySelector('input[type="hidden"]') as HTMLInputElement;
-    const valueSpan = selectEl.querySelector('.dcs-value') as HTMLSpanElement;
+    const hiddenInput = selectEl.querySelector(
+      'input[type="hidden"]',
+    ) as HTMLInputElement;
+    const valueSpan = selectEl.querySelector(".dcs-value") as HTMLSpanElement;
     const options = selectEl.querySelectorAll('[role="option"]');
 
-    options.forEach(opt => {
+    options.forEach((opt) => {
       const optEl = opt as HTMLElement;
       if (optEl.dataset.value === value) {
-        optEl.classList.add('selected');
+        optEl.classList.add("selected");
         valueSpan.textContent = optEl.textContent;
-        valueSpan.classList.remove('dcs-placeholder');
+        valueSpan.classList.remove("dcs-placeholder");
         hiddenInput.value = value;
       } else {
-        optEl.classList.remove('selected');
+        optEl.classList.remove("selected");
       }
     });
   }
@@ -211,9 +361,11 @@
   (window as any).__setDialogSelect = setDialogSelectValue;
 
   // Also allow opening from other buttons
-  const openBtns = document.querySelectorAll('#open-budget-dialog, #open-budget-dialog-mobile');
-  openBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
+  const openBtns = document.querySelectorAll(
+    "#open-budget-dialog, #open-budget-dialog-mobile",
+  );
+  openBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
       resetDialog();
       dialog?.showModal();
     });
@@ -221,20 +373,24 @@
 
   // Animated close function
   function closeWithAnimation() {
-    if (!dialog || dialog.classList.contains('closing')) return;
-    dialog.classList.add('closing');
-    dialog.addEventListener('animationend', () => {
-      dialog.classList.remove('closing');
-      dialog.close();
-    }, { once: true });
+    if (!dialog || dialog.classList.contains("closing")) return;
+    dialog.classList.add("closing");
+    dialog.addEventListener(
+      "animationend",
+      () => {
+        dialog.classList.remove("closing");
+        dialog.close();
+      },
+      { once: true },
+    );
   }
 
   // Close handlers
-  closeBtn?.addEventListener('click', () => closeWithAnimation());
-  successCloseBtn?.addEventListener('click', () => closeWithAnimation());
+  closeBtn?.addEventListener("click", () => closeWithAnimation());
+  successCloseBtn?.addEventListener("click", () => closeWithAnimation());
 
   // Click outside to close
-  dialog?.addEventListener('click', (e) => {
+  dialog?.addEventListener("click", (e) => {
     const rect = dialog.getBoundingClientRect();
     if (
       e.clientX < rect.left ||
@@ -247,79 +403,144 @@
   });
 
   // Escape key close with animation
-  dialog?.addEventListener('cancel', (e) => {
+  dialog?.addEventListener("cancel", (e) => {
     e.preventDefault();
     closeWithAnimation();
   });
 
   // Reset dialog when closed
-  dialog?.addEventListener('close', () => {
+  dialog?.addEventListener("close", () => {
     resetDialog();
   });
 
   function resetDialog() {
-    formView.style.display = '';
-    successView.style.display = 'none';
+    formView.style.display = "";
+    successView.style.display = "none";
     submitBtn.disabled = false;
-    submitText.style.display = '';
-    submitLoading.style.display = 'none';
-    // Close any open dropdowns
-    document.querySelectorAll('.dialog-custom-select.open').forEach(s => s.classList.remove('open'));
+    submitText.style.display = "";
+    submitLoading.style.display = "none";
+    document
+      .querySelectorAll(".dialog-custom-select.open")
+      .forEach((s) => s.classList.remove("open"));
   }
 
   // Phone mask
-  const phoneInput = document.getElementById('dialog-phone') as HTMLInputElement;
-  phoneInput?.addEventListener('input', () => {
-    let v = phoneInput.value.replace(/\D/g, '');
+  const phoneInput = document.getElementById(
+    "dialog-phone",
+  ) as HTMLInputElement;
+  phoneInput?.addEventListener("input", () => {
+    let v = phoneInput.value.replace(/\D/g, "");
     if (v.length > 11) v = v.slice(0, 11);
     if (v.length > 6) {
-      phoneInput.value = `(${v.slice(0,2)}) ${v.slice(2,7)}-${v.slice(7)}`;
+      phoneInput.value = `(${v.slice(0, 2)}) ${v.slice(2, 7)}-${v.slice(7)}`;
     } else if (v.length > 2) {
-      phoneInput.value = `(${v.slice(0,2)}) ${v.slice(2)}`;
+      phoneInput.value = `(${v.slice(0, 2)}) ${v.slice(2)}`;
     } else if (v.length > 0) {
       phoneInput.value = `(${v}`;
     }
   });
 
-  // Form submission
-  form?.addEventListener('submit', async (e) => {
+  // ===== Montar mensagem do WhatsApp =====
+  function buildWhatsAppMessage(data: Record<string, string>): string {
+    const lines = [
+      `Olá! Vim pelo site da Crown Consórcios.`,
+      ``,
+      `📋 *Dados da Simulação:*`,
+      `👤 Nome: ${data.nome || "—"}`,
+      `📧 Email: ${data.email || "—"}`,
+      `📱 Telefone: ${data.telefone || "—"}`,
+      `📍 Localização: ${data.localizacao || "—"}`,
+      `🏠 Consórcio: ${data.consorcio || "—"}`,
+      `💰 Entrada: ${data.entrada || "—"}`,
+      `💎 Valor: ${data.valor || "—"}`,
+    ];
+    if (data.mensagem) {
+      lines.push(`💬 Mensagem: ${data.mensagem}`);
+    }
+    lines.push(``, `Aguardo retorno!`);
+    return lines.join("\n");
+  }
+
+  // ===== Segurança: Rate Limiting =====
+  let submissionCount = 0;
+  const MAX_SUBMISSIONS = 3;
+
+  // ===== Segurança: Sanitização de inputs =====
+  function sanitize(str: string): string {
+    return str.replace(/<[^>]*>/g, "").trim();
+  }
+
+  // ===== Form submission =====
+  form?.addEventListener("submit", async (e) => {
     e.preventDefault();
+
+    // Anti-bot: honeypot check
+    const honeypot = (
+      document.getElementById("dialog-website") as HTMLInputElement
+    )?.value;
+    if (honeypot) return;
+
+    // Rate limiting
+    if (submissionCount >= MAX_SUBMISSIONS) {
+      alert(
+        "Você já enviou o número máximo de solicitações. Tente novamente mais tarde.",
+      );
+      return;
+    }
 
     // Show loading
     submitBtn.disabled = true;
-    submitText.style.display = 'none';
-    submitLoading.style.display = 'inline-flex';
+    submitText.style.display = "none";
+    submitLoading.style.display = "inline-flex";
 
     const formData = new FormData(form);
     const data: Record<string, string> = {};
     formData.forEach((value, key) => {
-      data[key] = value.toString();
+      if (key === "website") return; // Ignora honeypot
+      data[key] = sanitize(value.toString());
     });
-
-    data['data_envio'] = new Date().toLocaleString('pt-BR');
+    data["data_envio"] = new Date().toLocaleString("pt-BR");
 
     try {
+      // 1. Salvar na planilha (se configurada)
       if (GOOGLE_SCRIPT_URL) {
         await fetch(GOOGLE_SCRIPT_URL, {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data),
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ ...data, _token: FORM_TOKEN }),
         });
-      } else {
-        console.log('📋 Dados do formulário (configure GOOGLE_SCRIPT_URL para enviar):', data);
-        await new Promise(resolve => setTimeout(resolve, 800));
       }
 
-      formView.style.display = 'none';
-      successView.style.display = '';
+      submissionCount++;
+
+      // 2. Mostrar tela de sucesso
+      formView.style.display = "none";
+      successView.style.display = "";
       form.reset();
 
-    } catch (error) {
-      console.error('Erro ao enviar:', error);
-      formView.style.display = 'none';
-      successView.style.display = '';
+      // 3. Redirecionar para WhatsApp (após 1.5s para o usuário ver a confirmação)
+      if (WHATSAPP_NUMERO) {
+        const msg = encodeURIComponent(buildWhatsAppMessage(data));
+        const wppUrl = `https://wa.me/${WHATSAPP_NUMERO}?text=${msg}`;
+        setTimeout(() => {
+          window.open(wppUrl, "_blank", "noopener,noreferrer");
+        }, 1500);
+      }
+    } catch (_) {
+      submissionCount++;
+      // Mesmo com erro no Sheets, redireciona pro WhatsApp
+      formView.style.display = "none";
+      successView.style.display = "";
       form.reset();
+
+      if (WHATSAPP_NUMERO) {
+        const msg = encodeURIComponent(buildWhatsAppMessage(data));
+        const wppUrl = `https://wa.me/${WHATSAPP_NUMERO}?text=${msg}`;
+        setTimeout(() => {
+          window.open(wppUrl, "_blank", "noopener,noreferrer");
+        }, 1500);
+      }
     }
   });
 </script>
@@ -333,7 +554,7 @@
     background: white;
     width: 90%;
     max-width: 560px;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
     opacity: 0;
     overflow: visible;
   }
@@ -378,8 +599,12 @@
   }
 
   @keyframes backdropOut {
-    from { opacity: 1; }
-    to { opacity: 0; }
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
   }
 
   .dialog-header {
@@ -412,7 +637,9 @@
     border-radius: 50%;
     width: 36px;
     height: 36px;
-    transition: background 0.2s, color 0.2s;
+    transition:
+      background 0.2s,
+      color 0.2s;
     flex-shrink: 0;
   }
 
@@ -462,9 +689,11 @@
     border: 1px solid #e0e0e0;
     border-radius: 10px;
     font-size: 14px;
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
     color: var(--text-main);
-    transition: border-color 0.3s, box-shadow 0.3s;
+    transition:
+      border-color 0.3s,
+      box-shadow 0.3s;
     background: #fafafa;
   }
 
@@ -500,12 +729,14 @@
     border: 1px solid #e0e0e0;
     border-radius: 10px;
     padding: 10px 12px;
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-size: 14px;
     font-weight: 500;
     color: var(--gray-dark);
     cursor: pointer;
-    transition: border-color 0.3s, box-shadow 0.3s;
+    transition:
+      border-color 0.3s,
+      box-shadow 0.3s;
     text-align: left;
   }
 
@@ -582,7 +813,7 @@
     border-radius: 8px;
     margin-bottom: 2px;
     transition: all 0.2s ease;
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
   }
 
   .dcs-dropdown li:last-child {
@@ -619,8 +850,12 @@
   }
 
   @keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
   }
 
   /* Success View */
