@@ -8,6 +8,7 @@ import QuemSomos from "../components/QuemSomos/QuemSomos.astro";
 import NossaHistoria from "../components/NossaHistoria/NossaHistoria.astro";
 import Protecao from "../components/Protecao/Protecao.astro";
 import ConsorcioImobiliario from "../components/ConsorcioImobiliario/ConsorcioImobiliario.astro";
+import CarouselTipos from "../components/CarouselTipos/CarouselTipos.astro";
 import WhatsApp from "../components/WhatsApp/WhatsApp.astro";
 import RedesSociais from "../components/RedesSociais/RedesSociais.astro";
 import Footer from "../components/Footer/Footer.astro";
@@ -28,6 +29,70 @@ import Dialog from "../components/Dialog/Dialog.astro";
 			name="description"
 			content="Consultoria estratégica em consórcios. Alavancagem patrimonial, planejamento financeiro estruturado e aquisição inteligente de bens sem juros. Crown Consórcios."
 		/>
+		<script is:inline>
+			// ═══════════════════════════════════════════════════════════════════
+			// Auto-Scale Desktop — Crown Consórcios
+			// ───────────────────────────────────────────────────────────────────
+			// Objetivo: manter o layout SEMPRE com a mesma densidade visual de
+			// um monitor grande (1920px CSS) mesmo em telas menores ou com zoom
+			// elevado no navegador (110%, 125%, 150%).
+			//
+			// Técnica: CSS `zoom` no elemento <html>.
+			//   - Diferente de transform:scale(), o zoom recalcula todo o layout,
+			//     mantendo position:sticky, position:fixed e scroll funcionando.
+			//   - O zoom no <html> ajusta o "initial containing block", então
+			//     width:100%, vw, etc. escalam corretamente.
+			//
+			// Bug crítico evitado: NÃO usar window.innerWidth após aplicar zoom,
+			// porque ele reflete o viewport CSS (que muda com zoom do SO/browser),
+			// mas NÃO muda com CSS zoom — criando um loop de recalculo errado.
+			// Solução: salvar o viewport ANTES de qualquer zoom aplicado.
+			// ═══════════════════════════════════════════════════════════════════
+			(function () {
+				var DESIGN_WIDTH = 1920; // largura CSS do monitor 27" a 100% (FHD/2K)
+				var MOBILE_BP    = 992;  // mesmo breakpoint do CSS existente
+				var MIN_ZOOM     = 0.5;  // limite inferior (evita ficr ilegível)
+
+				// Viewport real sem influência de nenhum zoom CSS aplicado por nós.
+				// Removemos qualquer zoom nosso antes de medir, para ter o valor puro.
+				function getRawViewportWidth() {
+					var prev = document.documentElement.style.zoom;
+					document.documentElement.style.zoom = '1';
+					var w = document.documentElement.clientWidth;
+					document.documentElement.style.zoom = prev;
+					return w;
+				}
+
+				function applyZoom() {
+					var vw = getRawViewportWidth();
+
+					if (vw <= MOBILE_BP) {
+						// Mobile: retira zoom e deixa media queries do CSS agirem
+						document.documentElement.style.zoom = '';
+						return;
+					}
+
+					if (vw < DESIGN_WIDTH) {
+						var scale = Math.max(vw / DESIGN_WIDTH, MIN_ZOOM);
+						// Arredonda para 4 casas para evitar subpixel desnecessário
+						document.documentElement.style.zoom = scale.toFixed(4);
+					} else {
+						// Tela >= 1920px: sem zoom, layout em proporção natural
+						document.documentElement.style.zoom = '';
+					}
+				}
+
+				// Roda IMEDIATAMENTE (ancora no <head>) — zero flash de layout errado
+				applyZoom();
+
+				// Re-aplica ao redimensionar janela ou girar tela
+				var resizeTimer;
+				window.addEventListener('resize', function () {
+					clearTimeout(resizeTimer);
+					resizeTimer = setTimeout(applyZoom, 50);
+				});
+			})();
+		</script>
 	</head>
 	<body>
 		<Header />
@@ -38,6 +103,7 @@ import Dialog from "../components/Dialog/Dialog.astro";
 			<NossaHistoria />
 			<Protecao />
 			<ConsorcioImobiliario />
+			<CarouselTipos />
 			<WhatsApp />
 			<RedesSociais />
 		</main>

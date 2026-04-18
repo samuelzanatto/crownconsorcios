@@ -1,0 +1,371 @@
+---
+// src/components/CarouselTipos/CarouselTipos.astro
+
+const items = [
+  { title: "Crédito de\nAutomóvel", image: "https://images.unsplash.com/photo-1550355291-bbee04a92027?q=80&w=800&auto=format&fit=crop" },
+  { title: "Crédito para\nConstruir", image: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=800&auto=format&fit=crop" },
+  { title: "Crédito\nde Imóvel", image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=800&auto=format&fit=crop" },
+  { title: "Crédito para\nInvestimento", image: "https://images.unsplash.com/photo-1579532537598-459ecdaf39cc?q=80&w=800&auto=format&fit=crop" },
+  { title: "Crédito para\nAlavancagem Patrimonial", image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format&fit=crop" }
+];
+---
+
+<section id="tipos-consorcios" class="carousel-section">
+  <div class="container carousel-container">
+    <h2 class="carousel-title">Consórcios que atendemos</h2>
+    
+    <div class="carousel-layout">
+      <!-- Botão Anterior -->
+      <button class="carousel-arrow prev-arrow" aria-label="Anterior">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <div class="track-wrapper">
+        <div class="carousel-track" id="carousel-track">
+          {items.map((item) => (
+            <div class="carousel-card">
+              <div class="card-image-wrapper">
+                <img src={item.image} alt={item.title.replace('\n', ' ')} loading="lazy" />
+                <div class="blue-line"></div>
+              </div>
+              <div class="card-content">
+                <h3>{item.title}</h3>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Botão Próximo -->
+      <button class="carousel-arrow next-arrow" aria-label="Próximo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Indicadores (Dots) -->
+    <div class="carousel-dots" id="carousel-dots"></div>
+  </div>
+</section>
+
+<style>
+  .carousel-section {
+    padding: 80px 0;
+    background: white;
+  }
+
+  .carousel-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  .carousel-title {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--gray-dark);
+    margin-bottom: 40px;
+  }
+
+  .carousel-layout {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    position: relative;
+  }
+
+  /* Setas */
+  .carousel-arrow {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: #1a1a1a;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.3s ease, transform 0.2s ease;
+    flex-shrink: 0;
+  }
+
+  .carousel-arrow svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .carousel-arrow:hover {
+    color: var(--primary);
+    transform: scale(1.1);
+  }
+
+  /* Track principal */
+  .track-wrapper {
+    flex: 1;
+    overflow: hidden;
+    /* Adicionando máscara suave nos cantos se preferir, ou manter reto. O design parece reto. */
+  }
+
+  .carousel-track {
+    display: flex;
+    gap: 4px; /* Pequeno espaçamento branco entre os cards como no design */
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
+    padding-bottom: 5px;
+  }
+
+  .carousel-track::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+  }
+
+  /* Cards */
+  .carousel-card {
+    flex: 0 0 auto;
+    width: calc(25% - 3px); /* 4 itens visíveis usando calc exato */
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    background: #1a1a1a;
+    background-image: radial-gradient(circle at top right, rgba(255,255,255,0.03) 0%, transparent 60%);
+  }
+
+  .card-image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 320px; /* Aumentado a altura do card */
+  }
+
+  .card-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Linha azul estilo design */
+  .blue-line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50%; /* No design parece não ocupar 100% da largura, ou é um efeito de luz. Coloquei 50% pra criar um detalhe de design único */
+    height: 4px;
+    background: #00b4d8; /* Um tom de ciano semelhante ao do print */
+  }
+
+  .card-content {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 20px;
+    min-height: 140px; /* Aumentado o box preto tbm */
+  }
+
+  .card-content h3 {
+    color: white;
+    font-size: 19px;
+    font-weight: 500;
+    text-align: center;
+    line-height: 1.35;
+    white-space: pre-line;
+    margin: 0;
+  }
+
+  /* Dots */
+  .carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 30px;
+  }
+
+  :global(.dot) {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #003366; /* Tom escuro azul */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    padding: 0;
+  }
+
+  :global(.dot.active) {
+    background: #00b4d8; /* Azul claro ativo */
+    transform: scale(1.3);
+  }
+
+  /* Responsividade */
+  @media (max-width: 1200px) {
+    .carousel-card {
+      width: calc(33.333% - 2.66px); /* 3 itens visíveis */
+    }
+  }
+
+  @media (max-width: 900px) {
+    .carousel-card {
+      width: calc(50% - 2px); /* 2 itens visíveis */
+    }
+    .carousel-title {
+      font-size: 24px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .carousel-container {
+      padding: 0 15px;
+    }
+    .carousel-card {
+      width: calc(100% - 4px); /* 1 item visível */
+    }
+    .carousel-arrow {
+      display: none; /* Ocultar setas no mobile, permitir swipe */
+    }
+  }
+</style>
+
+<script>
+  function initCarousel() {
+    const track = document.getElementById('carousel-track');
+    const prevBtn = document.querySelector('.prev-arrow');
+    const nextBtn = document.querySelector('.next-arrow');
+    const dotsContainer = document.getElementById('carousel-dots');
+    
+    if (!track || !prevBtn || !nextBtn || !dotsContainer) return;
+
+    let cards = Array.from(track.children);
+    let autoPlayInterval = 0;
+    const AUTOPLAY_DELAY = 4000;
+
+    function renderDots() {
+      if (!track || !dotsContainer) return;
+      // recalcula quantos itens estao visiveis
+      const cardWidth = cards[0].getBoundingClientRect().width + 4; // com gap
+      const visibleCards = Math.round(track.clientWidth / cardWidth);
+      const maxIndex = Math.max(0, cards.length - visibleCards);
+      const dotCount = maxIndex + 1;
+
+      dotsContainer.innerHTML = ''; // Limpa dots
+
+      for (let i = 0; i < dotCount; i++) {
+        const dot = document.createElement('button');
+        dot.classList.add('dot');
+        dot.setAttribute('aria-label', `Página ${i + 1}`);
+        dot.addEventListener('click', () => {
+          scrollToIndex(i);
+          resetAutoPlay();
+        });
+        dotsContainer.appendChild(dot);
+      }
+      updateActiveDot();
+    }
+
+    function scrollToIndex(index = 0) {
+      if (!track) return;
+      const cardWidth = cards[0].getBoundingClientRect().width + 4;
+      track.scrollTo({ left: index * cardWidth, behavior: 'smooth' });
+    }
+
+    function updateActiveDot() {
+      if (!track || !dotsContainer) return;
+      const cardWidth = cards[0].getBoundingClientRect().width + 4;
+      let currentIndex = Math.round(track.scrollLeft / cardWidth);
+      
+      const dots = Array.from(dotsContainer.children);
+      // Garantir que não estoure o índice caso rolagem passe um pouco
+      if (currentIndex >= dots.length) currentIndex = dots.length - 1;
+
+      dots.forEach((dot, index) => {
+        if (index === currentIndex) {
+          dot.classList.add('active');
+        } else {
+          dot.classList.remove('active');
+        }
+      });
+    }
+
+    function scrollNext() {
+      if (!track) return;
+      const cardWidth = cards[0].getBoundingClientRect().width + 4;
+      const visibleCards = Math.round(track.clientWidth / cardWidth);
+      const maxIndex = Math.max(0, cards.length - visibleCards);
+      let currentIndex = Math.round(track.scrollLeft / cardWidth);
+
+      if (currentIndex >= maxIndex) {
+        // Se estiver no final, voltar pro comeco
+        scrollToIndex(0);
+      } else {
+        scrollToIndex(currentIndex + 1);
+      }
+    }
+
+    function scrollPrev() {
+      if (!track) return;
+      const cardWidth = cards[0].getBoundingClientRect().width + 4;
+      const visibleCards = Math.round(track.clientWidth / cardWidth);
+      const maxIndex = Math.max(0, cards.length - visibleCards);
+      let currentIndex = Math.round(track.scrollLeft / cardWidth);
+
+      if (currentIndex <= 0) {
+        // Se estiver no começo, vai pro final
+        scrollToIndex(maxIndex);
+      } else {
+        scrollToIndex(currentIndex - 1);
+      }
+    }
+
+    function startAutoPlay() {
+      stopAutoPlay();
+      autoPlayInterval = setInterval(scrollNext, AUTOPLAY_DELAY);
+    }
+
+    function stopAutoPlay() {
+      if (autoPlayInterval) clearInterval(autoPlayInterval);
+    }
+
+    function resetAutoPlay() {
+      startAutoPlay();
+    }
+
+    prevBtn.addEventListener('click', () => {
+      scrollPrev();
+      resetAutoPlay();
+    });
+
+    nextBtn.addEventListener('click', () => {
+      scrollNext();
+      resetAutoPlay();
+    });
+
+    track.addEventListener('scroll', () => {
+      updateActiveDot();
+    });
+
+    // Pausar autoplay se o mouse estiver por cima do track
+    track.addEventListener('mouseenter', stopAutoPlay);
+    track.addEventListener('mouseleave', startAutoPlay);
+
+    // Ajustar os dots on resize usando um leve debounce
+    let resizeTimer = 0;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        renderDots();
+      }, 100);
+    });
+
+    // Iniciar
+    renderDots();
+    startAutoPlay();
+  }
+
+  // Executar no load
+  document.addEventListener("DOMContentLoaded", initCarousel);
+</script>

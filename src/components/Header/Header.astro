@@ -158,33 +158,30 @@
 
   .mobile-nav ul {
     list-style: none;
-    padding: 16px 0;
+    padding: 8px 16px;
     margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 0;
+    gap: 4px;
   }
 
   .mobile-nav ul li {
-    border-bottom: 1px solid #f0f0f0;
-  }
-
-  .mobile-nav ul li:last-child {
     border-bottom: none;
   }
 
   .mobile-nav .nav-link {
     display: block;
-    padding: 14px 0;
+    padding: 12px 16px;
     font-size: 14px;
-    border-bottom: none;
-    background: none;
-    border-radius: 0;
+    font-weight: 500;
+    border-radius: 8px;
+    background: transparent;
     color: var(--gray-dark);
+    transition: all 0.2s ease;
   }
 
   .mobile-nav .nav-link.active {
-    background: none;
+    background: rgba(34, 97, 255, 0.08);
     color: var(--primary);
     font-weight: 700;
   }
@@ -253,11 +250,18 @@
       return { link, targetId, href };
     });
 
+    // Filtra IDs únicos para navegação
+    const uniqueIds = [...new Set(linksMap.map((item) => item.targetId).filter(Boolean))];
+    const sections = uniqueIds.map((id) => {
+      if (!id) return null;
+      return document.getElementById(id);
+    }).filter(Boolean);
+
     window.addEventListener("scroll", () => {
       const scrollPos = window.scrollY;
 
       // Se tiver bem no topo da página
-      if (scrollPos < 150) {
+      if (scrollPos < 100) {
         linksMap.forEach((item) => {
           item.link.classList.remove("active");
           if (item.href === "#") {
@@ -267,19 +271,16 @@
         return;
       }
 
-      // Encontrar todas as seções que existem na tela e possuam ID relacionado a um link
-      const sections = linksMap
-        .filter((item) => item.targetId)
-        .map((item) => document.getElementById(item.targetId || ""))
-        .filter(Boolean); // filtra nulos
-
       let currentSectionId = null;
 
-      // Pega a seção mais abaixo cujo topo já passou do meio da tela
+      // Usando getBoundingClientRect para evitar problemas de offsetTop em contêineres e zooms
       for (const section of sections) {
-        if (!section) continue;
-        const offset = section.offsetTop - 200; // margem para ativação antes de chegar nela
-        if (scrollPos >= offset) {
+        if (!section) continue; // Checagem explícita para evitar erros do TypeScript
+
+        const rect = section.getBoundingClientRect();
+        const sectionTop = rect.top + window.scrollY;
+        // margem dinâmica: se o topo da seção estiver 250px pra cima ou pra baixo da viewport
+        if (scrollPos >= sectionTop - 250) {
           currentSectionId = section.getAttribute("id");
         }
       }
