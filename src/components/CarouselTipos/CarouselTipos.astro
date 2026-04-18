@@ -2,45 +2,80 @@
 // src/components/CarouselTipos/CarouselTipos.astro
 
 const items = [
-  { title: "Crédito de\nAutomóvel", image: "https://images.unsplash.com/photo-1550355291-bbee04a92027?q=80&w=800&auto=format&fit=crop" },
-  { title: "Crédito para\nConstruir", image: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=800&auto=format&fit=crop" },
-  { title: "Crédito\nde Imóvel", image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=800&auto=format&fit=crop" },
-  { title: "Crédito para\nInvestimento", image: "https://images.unsplash.com/photo-1579532537598-459ecdaf39cc?q=80&w=800&auto=format&fit=crop" },
-  { title: "Crédito para\nAlavancagem Patrimonial", image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format&fit=crop" }
+  {
+    title: "Crédito de\nAutomóvel",
+    image: "/images/carro.avif",
+  },
+  {
+    title: "Crédito para\nConstruir",
+    image: "/images/construcao.avif",
+  },
+  {
+    title: "Crédito\nde Imóvel",
+    image: "/images/casa-moderna.avif",
+  },
+  {
+    title: "Crédito para\nInvestimento",
+    image: "/images/investimento.avif",
+  },
+  {
+    title: "Crédito para\nAlavancagem Patrimonial",
+    image: "/images/predios.avif",
+  },
 ];
 ---
 
 <section id="tipos-consorcios" class="carousel-section">
   <div class="container carousel-container">
     <h2 class="carousel-title">Consórcios que atendemos</h2>
-    
+
     <div class="carousel-layout">
       <!-- Botão Anterior -->
       <button class="carousel-arrow prev-arrow" aria-label="Anterior">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
           <polyline points="15 18 9 12 15 6"></polyline>
         </svg>
       </button>
 
       <div class="track-wrapper">
         <div class="carousel-track" id="carousel-track">
-          {items.map((item) => (
-            <div class="carousel-card">
-              <div class="card-image-wrapper">
-                <img src={item.image} alt={item.title.replace('\n', ' ')} loading="lazy" />
-                <div class="blue-line"></div>
+          {
+            items.map((item) => (
+              <div class="carousel-card">
+                <div class="card-image-wrapper">
+                  <img
+                    src={item.image}
+                    alt={item.title.replace("\n", " ")}
+                    loading="lazy"
+                  />
+                  <div class="blue-line" />
+                </div>
+                <div class="card-content">
+                  <h3>{item.title}</h3>
+                </div>
               </div>
-              <div class="card-content">
-                <h3>{item.title}</h3>
-              </div>
-            </div>
-          ))}
+            ))
+          }
         </div>
       </div>
 
       <!-- Botão Próximo -->
       <button class="carousel-arrow next-arrow" aria-label="Próximo">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
           <polyline points="9 18 15 12 9 6"></polyline>
         </svg>
       </button>
@@ -89,7 +124,9 @@ const items = [
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: color 0.3s ease, transform 0.2s ease;
+    transition:
+      color 0.3s ease,
+      transform 0.2s ease;
     flex-shrink: 0;
   }
 
@@ -133,7 +170,11 @@ const items = [
     display: flex;
     flex-direction: column;
     background: #1a1a1a;
-    background-image: radial-gradient(circle at top right, rgba(255,255,255,0.03) 0%, transparent 60%);
+    background-image: radial-gradient(
+      circle at top right,
+      rgba(255, 255, 255, 0.03) 0%,
+      transparent 60%
+    );
   }
 
   .card-image-wrapper {
@@ -233,11 +274,11 @@ const items = [
 
 <script>
   function initCarousel() {
-    const track = document.getElementById('carousel-track');
-    const prevBtn = document.querySelector('.prev-arrow');
-    const nextBtn = document.querySelector('.next-arrow');
-    const dotsContainer = document.getElementById('carousel-dots');
-    
+    const track = document.getElementById("carousel-track");
+    const prevBtn = document.querySelector(".prev-arrow");
+    const nextBtn = document.querySelector(".next-arrow");
+    const dotsContainer = document.getElementById("carousel-dots");
+
     if (!track || !prevBtn || !nextBtn || !dotsContainer) return;
 
     let cards = Array.from(track.children);
@@ -252,13 +293,13 @@ const items = [
       const maxIndex = Math.max(0, cards.length - visibleCards);
       const dotCount = maxIndex + 1;
 
-      dotsContainer.innerHTML = ''; // Limpa dots
+      dotsContainer.innerHTML = ""; // Limpa dots
 
       for (let i = 0; i < dotCount; i++) {
-        const dot = document.createElement('button');
-        dot.classList.add('dot');
-        dot.setAttribute('aria-label', `Página ${i + 1}`);
-        dot.addEventListener('click', () => {
+        const dot = document.createElement("button");
+        dot.classList.add("dot");
+        dot.setAttribute("aria-label", `Página ${i + 1}`);
+        dot.addEventListener("click", () => {
           scrollToIndex(i);
           resetAutoPlay();
         });
@@ -270,23 +311,23 @@ const items = [
     function scrollToIndex(index = 0) {
       if (!track) return;
       const cardWidth = cards[0].getBoundingClientRect().width + 4;
-      track.scrollTo({ left: index * cardWidth, behavior: 'smooth' });
+      track.scrollTo({ left: index * cardWidth, behavior: "smooth" });
     }
 
     function updateActiveDot() {
       if (!track || !dotsContainer) return;
       const cardWidth = cards[0].getBoundingClientRect().width + 4;
       let currentIndex = Math.round(track.scrollLeft / cardWidth);
-      
+
       const dots = Array.from(dotsContainer.children);
       // Garantir que não estoure o índice caso rolagem passe um pouco
       if (currentIndex >= dots.length) currentIndex = dots.length - 1;
 
       dots.forEach((dot, index) => {
         if (index === currentIndex) {
-          dot.classList.add('active');
+          dot.classList.add("active");
         } else {
-          dot.classList.remove('active');
+          dot.classList.remove("active");
         }
       });
     }
@@ -334,27 +375,27 @@ const items = [
       startAutoPlay();
     }
 
-    prevBtn.addEventListener('click', () => {
+    prevBtn.addEventListener("click", () => {
       scrollPrev();
       resetAutoPlay();
     });
 
-    nextBtn.addEventListener('click', () => {
+    nextBtn.addEventListener("click", () => {
       scrollNext();
       resetAutoPlay();
     });
 
-    track.addEventListener('scroll', () => {
+    track.addEventListener("scroll", () => {
       updateActiveDot();
     });
 
     // Pausar autoplay se o mouse estiver por cima do track
-    track.addEventListener('mouseenter', stopAutoPlay);
-    track.addEventListener('mouseleave', startAutoPlay);
+    track.addEventListener("mouseenter", stopAutoPlay);
+    track.addEventListener("mouseleave", startAutoPlay);
 
     // Ajustar os dots on resize usando um leve debounce
     let resizeTimer = 0;
-    window.addEventListener('resize', () => {
+    window.addEventListener("resize", () => {
       clearTimeout(resizeTimer);
       resizeTimer = setTimeout(() => {
         renderDots();
